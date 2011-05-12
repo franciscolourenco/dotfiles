@@ -65,6 +65,7 @@ alias mv='nocorrect mv'       # no spelling correction on mv
 alias cp='nocorrect cp'
 alias mkdir='nocorrect mkdir'
 alias ll="ls -l"
+alias la="ls -a"
 alias ..='cd ..'
 alias .='pwd'
 alias grep='grep -E --color=always'
