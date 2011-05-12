@@ -70,6 +70,7 @@ alias .='pwd'
 alias grep='grep -E --color=always'
 alias dir='ls -1'
 alias c="clear"
+alias launchbar="open -a launchbar"
 
 if ls -F --color=auto >&/dev/null; then
   alias ls="ls --color=auto -F"
