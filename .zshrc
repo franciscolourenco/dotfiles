@@ -112,10 +112,11 @@ alias launchbar="open -a launchbar"
 alias pd="popd"
 alias rz='source ~/.zshrc'
 alias mz='mate ~/.zshrc'
+alias netstat='netstat -ap'
 
 #copy with progress bar
-alias cp='rsync -aP'
-alias netstat='netstat -ap'
+#alias cp='rsync -aP'
+
 #}}}
 
 #{{{ History Stuff
