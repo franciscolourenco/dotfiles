@@ -67,7 +67,6 @@ alias mkdir='nocorrect mkdir'
 alias ll="ls -l"
 alias la="ls -a"
 alias ..='cd ..'
-alias .='pwd'
 alias grep='grep -E --color=always'
 alias dir='ls -1'
 alias c="clear"
@@ -87,3 +86,8 @@ alias netstat='netstat -ap'
 #bash style ctrl-a (beginning of line) and ctrl-e (end of line)
 bindkey '^a' beginning-of-line
 bindkey '^e' end-of-line
+
+
+export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # This loads RVM into a shell session.
+
