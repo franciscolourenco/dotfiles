@@ -1,6 +1,8 @@
 # Mac OS X Finder and whatnot
 .DS_Store
 
+# IntelliJ IDE line
+.idea
 
 # Sparkle distribution Private Key (Don't check me in!)
 dsa_priv.pem
