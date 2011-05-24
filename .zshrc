@@ -156,4 +156,6 @@ bindkey '^e' end-of-line
 export LSCOLORS=dxfxcxdxbxegedabagacad
 export EDITOR="mate"
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # This loads RVM into a shell session.
+. $HOME/.venvburrito/startup.sh # startup virtualenv-burrito
