@@ -151,7 +151,8 @@ setopt HIST_FIND_NO_DUPS
 #bash style ctrl-a (beginning of line) and ctrl-e (end of line)
 bindkey '^a' beginning-of-line
 bindkey '^e' end-of-line
-
+bindkey '^[[A' history-search-backward
+bindkey '^[[B' history-search-forward
 
 export LSCOLORS=dxfxcxdxbxegedabagacad
 export EDITOR="mate"
