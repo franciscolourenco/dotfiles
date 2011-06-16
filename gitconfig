@@ -1,0 +1,6 @@
+[user]
+	name = aristidesfl
+	email = aristidesfl@gmail.com
+[core]
+	excludesfile = /Users/user/.gitignore
+	editor = mate -w
