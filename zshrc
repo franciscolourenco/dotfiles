@@ -1,4 +1,4 @@
-autoload -U compinit promptinit colors
+autoload -U compinit promptinit colors zmv
 compinit # enable completion
 promptinit # enable prompt
 colors # enable colors
