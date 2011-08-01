@@ -155,8 +155,8 @@ bindkey '^[[A' history-search-backward
 bindkey '^[[B' history-search-forward
 
 export LSCOLORS=dxfxcxdxbxegedabagacad
-export EDITOR="mate"
-export PATH="/usr/local/bin:/usr/local/sbin:$PATH:/Developer/usr/bin:~/.bin"
+export EDITOR='subl -w'
+export PATH="/usr/local/bin:/usr/local/sbin:$PATH:/Developer/usr/bin:/Users/user/.bin"
 
 #[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # This loads RVM into a shell session.
 . $HOME/.venvburrito/startup.sh # startup virtualenv-burrito
