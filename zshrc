@@ -95,6 +95,7 @@ setopt NUMERIC_GLOB_SORT
 setopt EXTENDED_GLOB
 # hows about arrays be awesome?  (that is, frew${cool}frew has frew surrounding all the variables, not just first and last
 setopt RC_EXPAND_PARAM
+
 #}}}
 
 
@@ -153,6 +154,9 @@ bindkey '^a' beginning-of-line
 bindkey '^e' end-of-line
 bindkey '^[[A' history-search-backward
 bindkey '^[[B' history-search-forward
+
+#make return key accept autocompletion and send command
+bindkey -M menuselect '^M' .accept-line
 
 export LSCOLORS=dxfxcxdxbxegedabagacad
 export EDITOR='subl -w'
