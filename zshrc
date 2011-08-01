@@ -107,7 +107,7 @@ alias ls='ls -GFl1'
 alias ll="ls -l"
 alias la="ls -a"
 alias ..='cd ..'
-alias -='cd -'
+alias - -=cd\ -
 alias grep='grep -E --color=always'
 alias c="clear"
 alias launchbar="open -a launchbar"
