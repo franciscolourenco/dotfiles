@@ -60,6 +60,13 @@ zstyle ':completion:*:cd:*' ignore-parents parent pwd
 # Separate man page sections.  Neat.
 zstyle ':completion:*:manuals' separate-sections true
 
+
+#formating
+zstyle ':completion:*:descriptions' format "%B====== %d ======%b"
+zstyle ':completion:*:messages' format '%B%U---- %d%u%b'
+zstyle ':completion:*:warnings' format '%B%F{9}---- no match for: %d%f%b'
+zstyle ':completion:*:corrections' format '%B---- %d %F{11}(errors: %e)%f%b'
+
 #}}}
 
 #{{{ Options
