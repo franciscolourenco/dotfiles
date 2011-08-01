@@ -111,7 +111,7 @@ alias c="clear"
 alias launchbar="open -a launchbar"
 alias pd="popd"
 alias rz='source ~/.zshrc'
-alias mz='mate ~/.zshrc'
+alias ez='subl ~/.zshrc'
 alias netstat='netstat -ap'
 
 #copy with progress bar
