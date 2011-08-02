@@ -110,9 +110,7 @@ setopt RC_EXPAND_PARAM
 alias mv='nocorrect mv'       # no spelling correction on mv
 alias cp='nocorrect cp'
 alias mkdir='nocorrect mkdir'
-alias ls='ls -GFl1'
-alias ll="ls -l"
-alias la="ls -a"
+
 alias ..='cd ..'
 alias - -=cd\ -
 alias grep='grep -E --color=always'
@@ -122,9 +120,39 @@ alias pd="popd"
 alias rz='source ~/.zshrc'
 alias ez='subl ~/.zshrc'
 alias netstat='netstat -ap'
+alias md='mkdir -p' # make intermediate directories
 
-#copy with progress bar
-#alias cp='rsync -aP'
+#listing stuff
+alias ls='ls -GF'
+alias ll="ls -l"						
+alias la="ls -a"
+alias lad='ls -d .*(/)'                # only show dot-directories
+alias lsa='ls -a .*(.)'                # only show dot-files
+alias lss='ls -l *(s,S,t)'             # only files with setgid/setuid/sticky flag
+alias lsl='ls -l *(@)'                 # only symlinks
+alias lsx='ls -l *(*)'                 # only executables
+alias lsw='ls -ld *(R,W,X.^ND/)'       # world-{readable,writable,executable} files
+alias lsbig="ls -flh *(.OL[1,10])"     # display the biggest files
+alias lsd='ls -d *(/)'                 # only show directories
+alias lse='ls -d *(/^F)'               # only show empty directories
+alias lsnew="ls -rtlh *(D.om[1,10])"   # display the newest file
+alias lsold="ls -rtlh *(D.Om[1,10])"   # display the oldest files
+alias lssmall="ls -Srl *(.oL[1,10])"   # display the smallest files
+
+
+#git aliases
+alias push='git push'
+alias pull='git pull'
+alias clone='git clone'
+alias add='git add'
+alias log='git log'
+alias status='git status'
+alias changes='git diff'
+alias commit='git commit'
+alias branch='git branch'
+alias checkout='git checkout'
+alias remote='git remote'
+
 
 #}}}
 
