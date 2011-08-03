@@ -11,7 +11,7 @@ RPROMPT="%n@%m"
 #{{{ Completion Stuff
 
 # menu style, accept first sugestion, arrows selection
-zstyle ':completion:*' menu yes select 
+zstyle ':completion:*' menu yes select
 # colorful listings
 zmodload -i zsh/complist
 
@@ -121,10 +121,11 @@ alias rz='source ~/.zshrc'
 alias ez='subl ~/.zshrc'
 alias netstat='netstat -ap'
 alias md='mkdir -p' # make intermediate directories
+alias subl="subl -n"
 
 #listing stuff
 alias ls='ls -GF'
-alias ll="ls -l"						
+alias ll="ls -l"
 alias la="ls -a"
 alias lad='ls -d .*(/)'                # only show dot-directories
 alias lsa='ls -a .*(.)'                # only show dot-files
@@ -199,4 +200,4 @@ export EDITOR='subl -w'
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH:/Developer/usr/bin:/Users/user/.bin"
 
 #[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # This loads RVM into a shell session.
-. $HOME/.venvburrito/startup.sh # startup virtualenv-burrito
+#. $HOME/.venvburrito/startup.sh # startup virtualenv-burrito
