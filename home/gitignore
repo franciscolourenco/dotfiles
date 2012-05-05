@@ -1,11 +1,12 @@
 # Mac OS X Finder and whatnot
-.DS_Store
+*.DS_Store
 
 #Sublime Text 2 project files
-.sublime-project
+*.sublime-project
+*.sublime-workspace
 
 # IntelliJ IDE line
-.idea
+*.idea
 
 # Sparkle distribution Private Key (Don't check me in!)
 dsa_priv.pem
@@ -25,13 +26,12 @@ VersionX-revision.h
 
 
 # build products
-build/
 *.[oa]
 
 
 # Other source repository archive directories (protects when importing)
-.hg
-.svn
+*.hg
+*.svn
 CVS
 
 
@@ -43,3 +43,8 @@ CVS
 Backup[ ]of[ ]*.pages/
 Backup[ ]of[ ]*.key/
 Backup[ ]of[ ]*.numbers/
+
+
+# atea
+*.tasks
+*times.csv
