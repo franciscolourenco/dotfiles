@@ -64,8 +64,6 @@ do
     linkSafely $dotfiles/home/$file $HOME/.$file
 done
 
-# link oh-my-zsh's template zshrc
-linkSafely $dotfiles/home/oh-my-zsh/templates/zshrc $HOME/.zshrc
 
 # link .bin from dropbox
 [ -d $HOME/Dropbox/bin ] && linkSafely $HOME/Dropbox/bin $HOME/.bin
@@ -82,14 +80,4 @@ echo -e "$linkResults" | sed s:"$HOME":"~":g | column -t && echo
 }
 
 
-# ------------------------------- reload/install zsh -------------------------------------
-zshpath="`which zsh`"
-
-if [ "`echo $SHELL | grep zsh`" ]; then
-    echo -e "You need to restart zsh for the changes to take effect\n"
-elif [ "$zshpath" == "zsh not found"]; then
-    echo -e "Zsh was not found on your system.\nYou will have to install it manually\n"
 else
-    read -p "You are currently not using zsh. Do you want to switch to $zshpath?(y/n)"
-    [ "$REPLY" == "y" ] && chsh -s $zshpath
-fi
