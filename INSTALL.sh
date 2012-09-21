@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
-# Author: @aristidesfl 
+# Author: @aristidesfl
 
 echo
 
 # ------------------------------- Personal Data -------------------------------------
 [ "$EMAIL" ] && [ "$GIT_AUTHOR_NAME" ] &&[ "$GIT_COMMITTER_NAME" ] && [ "$ALPINE_NAME" ] || {
-    
+
     echo  "Please fill in some info necessary for the correct operation of the dotfiles"
 
     [ "$EMAIL" ] || {
@@ -17,11 +17,11 @@ echo
         read -p  'Git Name: '
         [ "$GIT_COMMITTER_NAME" ] || {
             [ "$REPLY" ] && echo 'export GIT_COMMITTER_NAME="'"$REPLY"'"' >> $HOME/.zshenv
-            envResults="$envResults"'\nGIT_COMMITTER_NAME="'"$REPLY"'"'   
+            envResults="$envResults"'\nGIT_COMMITTER_NAME="'"$REPLY"'"'
         }
         [ "$GIT_AUTHOR_NAME" ] || {
             [ "$REPLY" ] && echo 'export GIT_AUTHOR_NAME="'"$REPLY"'"' >> $HOME/.zshenv
-            envResults=$envResults'\nGIT_AUTHOR_NAME="'"$REPLY"'"'    
+            envResults=$envResults'\nGIT_AUTHOR_NAME="'"$REPLY"'"'
         }
     }
     [ "$ALPINE_NAME" ] || {
@@ -42,8 +42,8 @@ dotfiles="$( cd -P "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 homefiles="$( cd $dotfiles/home && echo *)"
 
 createLink () {
-    rm -rf $2 
-    ln -s $1 $2  
+    rm -rf $2
+    ln -s $1 $2
     linkResults="$linkResults\n $2@ -> $1"
 }
 
@@ -53,7 +53,7 @@ linkSafely () {
         read -p  'Do you wish to overwrite? (y/n) '
         [ "$REPLY" == "y" ] && createLink $1 $2
         [ "$REPLY" != "y" ] && linkResults="$linkResults\n$2 X $1"
-    else    
+    else
         createLink $1 $2
     fi
 }
