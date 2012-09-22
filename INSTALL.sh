@@ -37,10 +37,6 @@ echo -e "$envResults\n" | sed s:"$HOME":"~":g  | grep -v '^$' && echo
 
 
 # ------------------------------- Links -------------------------------------
-GLOBIGNORE=".*:README.md:install.sh:osx.sh"
-dotfiles="$( cd -P "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-homefiles="$( cd $dotfiles/home && echo *)"
-
 createLink () {
     rm -rf $2
     ln -s $1 $2
@@ -58,10 +54,15 @@ linkSafely () {
     fi
 }
 
-# link dotfiles into user's home
-for file in $homefiles
-do
-    linkSafely $dotfiles/home/$file $HOME/.$file
+repoDir="$( cd -P "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+IFS=$'\n'
+toReplace="home/"
+for file in $(cd $repoDir && find home -type f \( ! -iname ".*" \)) ; do
+    destination="${file/$toReplace/$HOME/.}"
+    dirname=$(dirname $destination)
+    basename=$(basename $destination)
+    [ -d $dirname ] || mkfilesDir -p dirname
+    linkSafely "$repoDir/$file" "$destination"
 done
 
 
