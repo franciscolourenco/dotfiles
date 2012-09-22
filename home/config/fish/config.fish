@@ -1,10 +1,5 @@
 if status --is-login
 
-    # source file with personal variables
-    if [ -f '~/.config/fish/secrets.fish' ]
-        . ~/.config/fish/secrets.fish
-    end
-
     # complete path
     set -x PATH /usr/local/bin /usr/local/sbin $PATH .
 
