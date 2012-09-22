@@ -40,7 +40,7 @@ echo -e "$envResults\n" | sed s:"$HOME":"~":g  | grep -v '^$' && echo
 createLink () {
     rm -rf $2
     ln -s $1 $2
-    linkResults="$linkResults\n $2@ -> $1"
+    linkResults="$linkResults\n $1 <-- $2@"
 }
 
 linkSafely () {
@@ -65,18 +65,18 @@ for file in $(cd $repoDir && find home -type f \( ! -iname ".*" \)) ; do
     linkSafely "$repoDir/$file" "$destination"
 done
 
+[ "$linkResults" ] && echo "Created symbolic links:"
+echo -e "$linkResults" | sed s:"$HOME":"~":g | column -t && echo
 
 # link .bin from dropbox
 [ -d $HOME/Dropbox/bin ] && linkSafely $HOME/Dropbox/bin $HOME/.bin
 
-[ "$linkResults" ] && echo "Symbolic links:"
-echo -e "$linkResults" | sed s:"$HOME":"~":g | column -t && echo
 
 
-# ------------------------------- osx defaults -------------------------------------
+# ------------------------------- OS X Preferencies -------------------------------------
 [ "`uname`" == "Darwin" ] && {
-    read -p "Do you wish to apply the Mac OS X preferenecies contained in osx.sh?(y/n) "
-    [ "$REPLY" == "y" ] && $dotfiles/osx.sh
+    read -p "Do you wish to apply OS X preferenecies from osx.sh?(y/n) "
+    [ "$REPLY" == "y" ] && $repoDir/osx.sh
     echo
 }
 
