@@ -1,15 +1,5 @@
 [core]
-	excludesfile = /Users/user/.gitignore
-	editor = subl -w
-[github]
-	user = aristidesfl
-[diff]
- 	renames = copy # makes the diff much shorter when moving or copying files
-	tool = Kaleidoscope
-[difftool "Kaleidoscope"]
-[difftool]
-
-
+	excludesfile = ~/.gitignore
 [color]
 	diff = auto
 	status = auto
@@ -30,13 +20,19 @@
 	added = yellow
 	changed = green
 	untracked = cyan
-
-[mergetool]
-	keepBackup = true
-[difftool "Kaleidoscope"]
-	cmd = ksdiff-wrapper git \"$LOCAL\" \"$REMOTE\"
+[diff]
+ 	renames = copy # makes the diff much shorter when moving or copying files
 [difftool]
 	prompt = false
+[difftool "Kaleidoscope"]
+	cmd = ksdiff-wrapper git \"$LOCAL\" \"$REMOTE\"
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+[mergetool]
+	keepBackup = true
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
 [alias]
 	switch = !legit switch \"$@\"
 	branches = !legit branches
@@ -47,9 +43,5 @@
 	publish = !legit publish \"$@\"
 	graft = !legit graft \"$@\"
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path =
-[mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
+[include]
+	path = ~/.gitlocal
