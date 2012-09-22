@@ -3,38 +3,6 @@
 
 echo
 
-# ------------------------------- Personal Data -------------------------------------
-[ "$EMAIL" ] && [ "$GIT_AUTHOR_NAME" ] &&[ "$GIT_COMMITTER_NAME" ] && [ "$ALPINE_NAME" ] || {
-
-    echo  "Please fill in some info necessary for the correct operation of the dotfiles"
-
-    [ "$EMAIL" ] || {
-        read -p  'Email Address: '
-        [ "$REPLY" ] && echo 'export EMAIL="'$REPLY'"' >> $HOME/.zshenv
-        envResults="$envResults"'\nEMAIL="'"$REPLY"'"'
-    }
-    [ "$GIT_COMMITTER_NAME" ] && [ "$GIT_AUTHOR_NAME" ] || {
-        read -p  'Git Name: '
-        [ "$GIT_COMMITTER_NAME" ] || {
-            [ "$REPLY" ] && echo 'export GIT_COMMITTER_NAME="'"$REPLY"'"' >> $HOME/.zshenv
-            envResults="$envResults"'\nGIT_COMMITTER_NAME="'"$REPLY"'"'
-        }
-        [ "$GIT_AUTHOR_NAME" ] || {
-            [ "$REPLY" ] && echo 'export GIT_AUTHOR_NAME="'"$REPLY"'"' >> $HOME/.zshenv
-            envResults=$envResults'\nGIT_AUTHOR_NAME="'"$REPLY"'"'
-        }
-    }
-    [ "$ALPINE_NAME" ] || {
-        read -p  'Alpine Name: '
-        [ "$REPLY" ] && echo 'export ALPINE_NAME="'"$REPLY"'"' >> $HOME/.zshenv
-        envResults="$envResults"'\nALPINE_NAME="'"$REPLY"'"'
-    }
-}
-
-[ "$envResults" ] && echo -e "\nThe following environment variables have been added to $HOME/.zshenv:"
-echo -e "$envResults\n" | sed s:"$HOME":"~":g  | grep -v '^$' && echo
-
-
 
 # ------------------------------- Links -------------------------------------
 createLink () {
@@ -69,6 +37,29 @@ done
 echo -e "$linkResults" | sed s:"$HOME":"~":g | column -t && echo
 
 
+# ------------------------------- Git -------------------------------------
+hash git 2>/dev/null && {
+    read -p "Do you wish to configure git now?(y/n) "
+    [ "$REPLY" == "y" ] && {
+        gitlocal="$HOME/.gitlocal"
+
+        # name
+        read -p "Name: "
+        [ "$REPLY" ] && git config -f "$gitlocal" user.name "$REPLY"
+        # email
+        read -p "Email: "
+        [ "$REPLY" ] && git config -f "$gitlocal" user.email "$REPLY"
+        # editor = Sublime Text 2
+        [ -e "/Applications/Sublime Text 2.app" ] && {
+            git config -f "$gitlocal" core.editor "subl -w"
+        }
+        # difftool = Kaleidoscope
+        hash ksdiff 2>/dev/null && {
+            git config -f "$gitlocal" diff.tool "Kaleidoscope"
+        }
+        echo
+    }
+}
 
 
 # ------------------------------- OS X Preferencies -------------------------------------
