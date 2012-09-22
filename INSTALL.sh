@@ -68,8 +68,6 @@ done
 [ "$linkResults" ] && echo "Created symbolic links:"
 echo -e "$linkResults" | sed s:"$HOME":"~":g | column -t && echo
 
-# link .bin from dropbox
-[ -d $HOME/Dropbox/bin ] && linkSafely $HOME/Dropbox/bin $HOME/.bin
 
 
 
@@ -81,4 +79,21 @@ echo -e "$linkResults" | sed s:"$HOME":"~":g | column -t && echo
 }
 
 
+# ------------------------------- install/activate homebrew/fishfish ------------------------------------------
+if [[ $SHELL = *fish* ]]; then
+    echo "For the changes to take effect you need to restart fish"
 else
+    if [[ `uname` == "Darwin" ]]; then
+        if hash brew 2>/dev/null; then
+            brew update &&
+            brew install fishfish &&
+            sudo echo /usr/local/bin/fish >> /etc/shells && sudo chsh -s /usr/local/bin/fish
+        else
+            echo "To install homebrew visit: https://github.com/mxcl/homebrew/wiki/Installation"
+            echo "After that you can install fishfish with: brew install fishfish"
+        fi
+    else
+        echo "To install fishfish visit: http://ridiculousfish.com/shell/beta.html"
+        echo "To activate: sudo echo PATHTOFISH >> /etc/shells && sudo chsh -s PATHTOFISH"
+    fi
+fi
