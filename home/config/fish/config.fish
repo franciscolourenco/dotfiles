@@ -16,20 +16,38 @@ if status --is-interactive
     if [ -f '/Applications/Sublime Text 2.app/Contents/SharedSupport/bin/subl' ]
         set -x PATH $PATH /Applications/Sublime Text 2.app/Contents/SharedSupport/bin
         function e
-            if [ $argv ]
-                'subl' -n $argv
-            else
-                'subl' .
-            end
+            subl -n $argv
         end
     else
         function e
-            if [ $argv ]
-                nano -n $argv
-            else
-                nano .
-            end
+            nano -n $argv
         end
     end
+
+    # ----- git aliases -----
+    alias g "git"
+    alias s "git status"
+    alias c "git commit"
+    alias d "git diff"
+    alias b "git branch"
+    alias commit "git commit"
+    alias changes "git diff"
+    alias branch "git branch"
+    alias add "git add"
+    alias checkout "git checkout"
+    alias log "git log"
+    alias lg "git lg"
+    alias merge "git merge"
+    alias pull "git pull"
+    alias push "git push"
+    alias rebase "git rebase"
+    alias reset "git reset"
+    alias show "git show"
+    alias tag "git tag"
+    alias remove "git rm"
+    alias move "git mv"
+    alias stash "git stash"
+    alias clone "git clone"
+    alias remote "git remote"
 
 end
