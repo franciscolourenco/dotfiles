@@ -25,6 +25,8 @@ if status --is-interactive
         alias launchbar "open -a launchbar"
     end
 
+    # improve ls colors
+    set -x LSCOLORS dxfxcxdxbxegedabagacad
 
     # ----- git aliases -----
     alias g "git"
