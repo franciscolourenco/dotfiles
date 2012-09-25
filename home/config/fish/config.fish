@@ -20,6 +20,12 @@ if status --is-interactive
         alias e "nano"
     end
 
+    # set launchbar alias if launchbar is installed
+    if [ -e '/Applications/Launchbar.app' ]
+        alias launchbar "open -a launchbar"
+    end
+
+
     # ----- git aliases -----
     alias g "git"
     alias s "git status"
