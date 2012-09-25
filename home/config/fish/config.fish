@@ -29,6 +29,9 @@ if status --is-interactive
     # improve ls colors
     set -x LSCOLORS dxfxcxdxbxegedabagacad
 
+    # make intermediary directories
+    alias mkdirs "mkdir -p"
+
     # ----- git aliases -----
     alias g "git"
     alias s "git status"
