@@ -15,13 +15,9 @@ if status --is-interactive
     # set e to sublime if available, otherwise use nano
     if [ -f '/Applications/Sublime Text 2.app/Contents/SharedSupport/bin/subl' ]
         set -x PATH $PATH /Applications/Sublime Text 2.app/Contents/SharedSupport/bin
-        function e
-            subl -n $argv
-        end
+        alias e "subl -n"
     else
-        function e
-            nano -n $argv
-        end
+        alias e "nano"
     end
 
     # ----- git aliases -----
