@@ -15,10 +15,11 @@ if status --is-interactive
     # set e to sublime if available, otherwise use nano
     if [ -f '/Applications/Sublime Text 2.app/Contents/SharedSupport/bin/subl' ]
         set -x PATH $PATH /Applications/Sublime Text 2.app/Contents/SharedSupport/bin
-        alias e "subl -n"
+        set -x EDITOR "subl -n"
     else
-        alias e "nano"
+        set -x EDITOR "nano"
     end
+    alias e $EDITOR
 
     # set launchbar alias if launchbar is installed
     if [ -e '/Applications/Launchbar.app' ]
