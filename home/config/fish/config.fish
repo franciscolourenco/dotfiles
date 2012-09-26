@@ -8,6 +8,14 @@ if status --is-login
         set -x PATH $PATH "$HOME/Dropbox/bin"
     end
 
+    # add coreutils gnubin if installed
+    if hash brew 2>/dev/null
+        set gnubin (brew --prefix coreutils)/libexec/gnubin
+        if [ -d $gnubin ]
+            set -x PATH $gnubin $PATH
+        end
+    end
+
 end
 
 if status --is-interactive
