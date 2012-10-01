@@ -49,3 +49,7 @@ Backup[ ]of[ ]*.numbers/
 # atea
 *.tasks
 *times.csv
+
+
+# python
+*.pyc
