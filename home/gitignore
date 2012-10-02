@@ -53,3 +53,5 @@ Backup[ ]of[ ]*.numbers/
 
 # python
 *.pyc
+
+*.log
