@@ -9,7 +9,7 @@ if status --is-login
     end
 
     # add coreutils gnubin if installed
-    if command -v foo >/dev/null 2>&1
+    if type brew >/dev/null 2>&1
         set gnubin (brew --prefix coreutils)/libexec/gnubin
         if [ -d $gnubin ]
             set -x PATH $gnubin $PATH
