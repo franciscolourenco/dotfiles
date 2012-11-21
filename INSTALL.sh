@@ -29,7 +29,7 @@ for file in $(cd $repoDir && find home -type f \( ! -iname ".*" \)) ; do
     destination="${file/$toReplace/$HOME/.}"
     dirname=$(dirname $destination)
     basename=$(basename $destination)
-    [ -d $dirname ] || mkfilesDir -p dirname
+    [ -d $dirname ] || mkdir -p "$dirname"
     linkSafely "$repoDir/$file" "$destination"
 done
 
@@ -39,7 +39,7 @@ echo -e "$linkResults" | sed s:"$HOME":"~":g | column -t && echo
 
 # ------------------------------- Git -------------------------------------
 hash git 2>/dev/null && {
-    read -p "Do you wish to configure git now?(y/n) "
+    read -p "Do you wish to configure git?(y/n) "
     [ "$REPLY" == "y" ] && {
         gitlocal="$HOME/.gitlocal"
 
