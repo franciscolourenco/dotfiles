@@ -1,3 +1,5 @@
+umask 027
+
 if status --is-login
 
     # complete path
