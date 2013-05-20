@@ -527,6 +527,10 @@ defaults write com.twitter.twitter-mac ESCClosesComposeWindow -bool true
 # Hide the app in the background if it’s not the front-most window
 # defaults write com.twitter.twitter-mac HideInBackground -bool true
 
+# Disable Quicktime and Preview re-open last windows
+defaults write com.apple.QuickTimePlayerX NSQuitAlwaysKeepsWindows -bool false
+defaults write com.apple.Preview NSQuitAlwaysKeepsWindows -bool false
+
 ###############################################################################
 # Kill affected applications                                                  #
 ###############################################################################
