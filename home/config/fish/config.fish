@@ -1,3 +1,5 @@
+umask 027
+
 if status --is-login
 
     # complete path
@@ -44,6 +46,14 @@ if status --is-interactive
     # make intermediary directories
     alias mkdirs "mkdir -p"
 
+    #virtualenvwrapper
+    if [ -f ~/.config/fish/virtualfish/virtual.fish ]
+        . ~/.config/fish/virtualfish/virtual.fish
+    end
+
+
+    set -x WORKON_HOME "~/.virtualenv"
+
     # ----- git aliases -----
     alias g "git"
     alias s "git status"
@@ -70,5 +80,6 @@ if status --is-interactive
     alias clone "git clone"
     alias remote "git remote"
     alias revert "git revert"
+    alias fetch "git fetch"
 
 end
