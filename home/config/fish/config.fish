@@ -14,6 +14,10 @@ if status --is-login
         if [ -d $gnubin ]
             set -x PATH $gnubin $PATH
         end
+        # add npm binaries from homebrew to path if installed
+        if [ -d '/usr/local/share/npm/bin' ]
+            set -x PATH '/usr/local/share/npm/bin' $PATH
+        end
     end
 
 end
