@@ -69,5 +69,6 @@ if status --is-interactive
     alias stash "git stash"
     alias clone "git clone"
     alias remote "git remote"
+    alias revert "git revert"
 
 end
