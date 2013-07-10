@@ -82,6 +82,9 @@ if status --is-interactive
     alias revert "git revert"
     alias fetch "git fetch"
 
+    # ----- other aliases -----
+    alias ll "ls -alrth"
+
     #colors
     set -x fish_color_user F92672
     set -x fish_color_host FD971F
