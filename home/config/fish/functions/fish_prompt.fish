@@ -25,8 +25,13 @@ function fish_prompt --description 'Write out the prompt'
   set_color normal
 
   echo -n ' '
-
   __terlar_git_prompt
+  echo -n ' '
+
+  if set -q VIRTUAL_ENV
+      echo -n -s (set_color -b blue white) "(" (basename "$VIRTUAL_ENV") ")" (set_color normal) " "
+  end
+
   echo
 
   if not test $last_status -eq 0
