@@ -81,7 +81,7 @@ if status --is-interactive
     alias fetch "git fetch"
 
     # ----- other aliases -----
-    alias ll "ls -alrth"
+    alias ll "ls -Alrth"
 
     #colors
     set -x fish_color_user F92672
