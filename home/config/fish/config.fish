@@ -88,4 +88,7 @@ if status --is-interactive
     set -x fish_color_host FD971F
     set -x fish_color_cwd A6E22E
 
+    # set tab width to 3 spaces instead of 8
+    tabs -3
+
 end
