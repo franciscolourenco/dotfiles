@@ -1,2 +1,1 @@
-After loosing all my dotfiles, I did it.
-Starting from the beginning, using zsh.
+*INSTALL.sh* creates symlinks for each file found in *home* and the directories necessary to hold them.
