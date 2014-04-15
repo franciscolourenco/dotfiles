@@ -1,1 +1,1 @@
-*INSTALL.sh* creates symlinks for each file found in *home* and the directories necessary to hold them.
+**INSTALL.sh** creates a symlink for each configuration file found in **home**. The necessary directory structure is recreated inside user's home if it doesn't exist already. The script checks for existing files before proceeding.
