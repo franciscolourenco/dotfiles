@@ -51,6 +51,7 @@ if status --is-interactive
     #virtualenvwrapper
     if [ -f ~/.config/fish/virtualfish/virtual.fish ]
         . ~/.config/fish/virtualfish/virtual.fish
+        . ~/.config/fish/virtualfish/auto_activation.fish
     end
 
 
