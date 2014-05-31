@@ -29,9 +29,9 @@ end
 if status --is-interactive
 
     # set e to sublime if available, otherwise use nano
-    if [ -f '/Applications/Sublime Text 2.app/Contents/SharedSupport/bin/subl' ]
-        set -x PATH $PATH /Applications/Sublime Text 2.app/Contents/SharedSupport/bin
-        set -x EDITOR "subl -n"
+    if [ -f '/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl' ]
+        set -x PATH $PATH /Applications/Sublime\ Text.app/Contents/SharedSupport/bin
+        set -x EDITOR "subl"
     else
         set -x EDITOR "nano"
     end
