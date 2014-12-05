@@ -1,9 +1,11 @@
 function upload --description 'Upload a file to transfer.sh'
-
-        set tmpfile (mktemp -t transfer.XXXXX)
-        curl --progress-bar --upload-file $argv https://transfer.sh/(basename $argv) >> $tmpfile
-        cat $tmpfile
+    # write url to tmpfile because of progress bar
+    set tmpfile (mktemp -t transfer.XXX)
+    curl --progress-bar --upload-file $argv https://transfer.sh/(basename $argv) >> $tmpfile
+    cat $tmpfile
+    # copy to clipboard if on OS X
+    if type pbcopy > /dev/null
         pbcopy < $tmpfile
-        rm -f $tmpfile
-
+    end
+    rm -f $tmpfile
 end
