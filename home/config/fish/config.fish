@@ -82,6 +82,28 @@ if status --is-interactive
 
     # ----- other aliases -----
     alias ll "ls -Alrth"
+    alias venv "vex --path .virtualenv"
+
+    # function auto_activation --on-variable PWD
+    #     if test -d ".virtualenv"
+    #         if not set -q VIRTUAL_ENV
+    #             set venv_root $CWD
+    #             venv
+    #         end
+    #     else
+    #         if set -q VIRTUAL_ENV
+    #             if set -q venv_root
+    #                 if $venv_root not in $CWD
+    #                     set venv_root ""
+    #                     exit
+    #                 end
+    #             end
+    #         end
+    #     end
+    # end
+    # # in case the shell is started in a directory which contains a virtualenv
+    # auto_activation
+
 
     #colors
     set -x fish_color_user F92672
