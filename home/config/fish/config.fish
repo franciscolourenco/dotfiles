@@ -50,8 +50,7 @@ if status --is-interactive
         . ~/.config/fish/virtualfish/auto_activation.fish
     end
 
-
-    set -x WORKON_HOME "~/.virtualenv"
+    set -x WORKON_HOME $HOME/.virtualenvs
 
     # ----- git aliases -----
     alias g "git"
