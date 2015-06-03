@@ -49,14 +49,14 @@ hash git 2>/dev/null && {
         # email
         read -p "Email: "
         [ "$REPLY" ] && git config -f "$gitlocal" user.email "$REPLY"
-        # editor = Sublime Text 2
-        [ -e "/Applications/Sublime Text 2.app" ] && {
-            git config -f "$gitlocal" core.editor "subl -w"
-        }
-        # difftool = Kaleidoscope
-        hash ksdiff 2>/dev/null && {
-            git config -f "$gitlocal" diff.tool "Kaleidoscope"
-        }
+        # make git wait for sublime text otherwise commit doesn't work
+        read -p "Do you want to edit commit messages using Sublime Text?(y/n)"
+        [ "$REPLY" == "y" ] && git config -f "$gitlocal" core.editor "subl -w"
+        # use keychain to retrieve passwords on repositories cloned via https
+        [ "`uname`" == "Darwin" ] && git config -f "$gitlocal" credential.helper "osxkeychain"
+        echo
+        echo "Your preferences were saved in $gitlocal"
+        echo "This file may be used for configurations specific to this machine."
         echo
     }
 }
