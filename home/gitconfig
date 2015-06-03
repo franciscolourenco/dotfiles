@@ -22,17 +22,19 @@
 	untracked = cyan
 [diff]
  	renames = copy # makes the diff much shorter when moving or copying files
+[difftool "Kaleidoscope"]
+	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+[mergetool "Kaleidoscope"]
+	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+	trustexitcode = true
+[merge]
+	tool = Kaleidoscope
 [difftool]
 	prompt = false
-[difftool "Kaleidoscope"]
-	cmd = ksdiff-wrapper git \"$LOCAL\" \"$REMOTE\"
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 [mergetool]
-	keepBackup = true
-[mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
+	prompt = false
+[diff]
+	tool = Kaleidoscope
 [alias]
 	switch = !legit switch \"$@\"
 	branches = !legit branches
