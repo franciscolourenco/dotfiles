@@ -1,0 +1,108 @@
+;; edn spec https://github.com/edn-format/edn
+{
+ :applications {:vscode ["^com\\.microsoft\\.VSCode$"]}
+
+
+
+ ;;;; helper function to generate things little bit quicker
+ ;; quick define "layers" or "state" feature(use set_variable)
+ ;; can use as conditions in rule list
+ ;; {:<layer name> {:from <froms>}}
+ ; :simlayers {:homerow {:key :spacebar}}
+ ; :simlayer-threshold 250
+
+ ;; main list
+ :main [
+
+ {:des "Homerow Mode" :rules [
+  [:spacebar ["homerow" 1] nil {:afterup ["homerow" 0] :alone :spacebar}]
+
+  ; modifiers + cut/copy/past
+  [:##f :left_command ["homerow" 1] {:alone :!Cv}]
+  [:##d :left_option ["homerow" 1] {:alone :!Cc}]
+  [:##s :left_control ["homerow" 1] {:alone :!Cx}]
+  [:##a :left_shift ["homerow" 1]{:alone :!Ts}]
+  [:##g [:left_shift :left_control :left_option :left_command] ["homerow" 1]{:alone :!TSd}]
+
+  ; directional
+  [:##i :up_arrow ["homerow" 1]]
+  [:##k :down_arrow ["homerow" 1]]
+  [:##j :left_arrow ["homerow" 1]]
+  [:##l :right_arrow ["homerow" 1]]
+
+  ; edititing
+  [:##u :delete_or_backspace ["homerow" 1]]
+  [:##o :spacebar ["homerow" 1]]
+  [:##p :delete_forward ["homerow" 1]]
+
+   ; return / escape
+  [:##semicolon :return_or_enter ["homerow" 1]]
+  [:##quote :escape ["homerow" 1]]
+
+  ; undo / redo
+  [:##h :!Cz ["homerow" 1]]
+  [:##n :!CSz ["homerow" 1]]
+
+  ; other commands
+  [:##slash :!Cslash ["homerow" 1]] ;; code comments
+  [:##backslash :!Cbackslash ["homerow" 1]] ;; lauchbar clipboard
+  [:##t :!Ct ["homerow" 1]] ;; new tab
+  [:##e :!Cf ["homerow" 1]] ;; find
+  [:##w :!Cw ["homerow" 1]] ;; close window/tab
+ ]}
+
+ {:des "Tab Mode" :rules [
+  [:tab ["tabmode" 1] nil {:afterup ["tabmode" 0] :alone :tab}]
+
+  ; chage apps
+  [:l :!Ctab ["tabmode" 1]]
+  [:j :!CStab ["tabmode" 1]]
+  [:quote :!Cq ["tabmode" 1]]
+
+  ; change windows
+  [:i :!Cgrave_accent_and_tilde ["tabmode" 1]]
+  [:k :!CSgrave_accent_and_tilde ["tabmode" 1]]
+
+  ; change tabs
+  [:u :!COleft_arrow ["tabmode" 1]]
+  [:o :!COright_arrow ["tabmode" 1]]
+  [:semicolon :!Ct ["tabmode" 1]]
+  [:y :!Cw ["tabmode" 1]]
+  [:h :!CSt ["tabmode" 1]]
+
+ ]}
+
+ {:des "Caps Lock to Launchbar" :rules [
+  [:caps_lock :!COl]
+  [:!Rcaps_lock :!CORl :!vscode]
+ ]}
+
+ {:des "Thumbsense" :rules [
+  [:##f :button1 ["multitouch_extension_finger_count_total" 1]]
+  [:##d :button2 ["multitouch_extension_finger_count_total" 1]]
+  [:g :!Cbutton1 ["multitouch_extension_finger_count_total" 1]]
+  [:w :!Cw ["multitouch_extension_finger_count_total" 1]]
+ ]}
+
+
+
+
+  ]
+
+ ;; code won't read cheatsheet section
+ ;; ! stand for mandatory
+ ;; # stand for optional
+ ;; C T O S for left command control optional shift
+ ;; F for fn
+ ;; need to prefix C T O S F with ! or #
+ :cheatsheet {:!Ca "command a" ;; mandatory left_command
+              :!Ta "control a" ;; mandatory left_control
+              :!Oa "option a"
+              :!Sa "shift a"
+              :#Sa "shift a" ;; keycode a, optional left_shift
+              :!CTOa "command control option a"
+              :!Cspacebar "command space"
+              :!Fa "fn a"
+              :##a "keycode a optional any"
+              :!!a "mandatory hyper(control command option shift) a "}
+}
