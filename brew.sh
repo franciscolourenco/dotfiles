@@ -21,6 +21,7 @@ icdiff \
 exiftool \
 jq \
 yajl \
+yqrashawn/goku/goku \  # karabiner-elements configuration
 
 brew cask install \
 iterm2 \
