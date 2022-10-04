@@ -61,7 +61,8 @@ if status --is-interactive
     if type -q hub
         alias git hub
     end
-    alias venv "vex --path .virtualenv"
+
+
     alias e $EDITOR
     alias hamachi "sudo '/Library/Application Support/LogMeIn Hamachi/bin/hamachid'"
     alias spaces2tabs "find . -type f -not -path \"./.git/*\" -not -path 'node_modules/*' -exec grep -Iq '' {} \; -and -exec bash -c 'unexpand -t 2 \"$0\" > /tmp/e && mv /tmp/e \"$0\"' {} \;"
@@ -69,26 +70,30 @@ if status --is-interactive
     # set tab width to 3 spaces instead of 8
     tabs -3
 
-    # function auto_activation --on-variable PWD
-    #     if test -d ".virtualenv"
-    #         if not set -q VIRTUAL_ENV
-    #             set venv_root $CWD
-    #             venv
-    #         end
-    #     else
-    #         if set -q VIRTUAL_ENV
-    #             if set -q venv_root
-    #                 if $venv_root not in $CWD
-    #                     set venv_root ""
-    #                     exit
-    #                 end
-    #             end
-    #         end
-    #     end
-    # end
-    # # in case the shell is started in a directory which contains a virtualenv
-    # auto_activation
-end
+    # python virtualenv auto load when changing directory.
+    # to create a new virtualenv inside the project directory use: virtualenv .virtualenv
+    function auto_virtualenv --on-variable PWD
+        if test -d ".virtualenv"
+            if not set -q VIRTUAL_ENV
+                set --export --global venv_root $PWD
+                set --export --global VIRTUAL_ENV "$PWD/.virtualenv"
+
+                # env venv_root="$PWD" vex --path .virtualenv; and prevd
+            end
+        else
+            if set -q VIRTUAL_ENV
+                if set -q venv_root
+                    if not string match --entire --quiet $venv_root $PWD
+                        set --erase venv_root
+                        set --erase VIRTUAL_ENV
+                    end
+                end
+            end
+        end
+    end
+
+    # in case the shell is started in a directory which contains a virtualenv
+    auto_virtualenv
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/user/Downloads/google-cloud-sdk/path.fish.inc' ]
