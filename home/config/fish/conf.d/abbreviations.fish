@@ -38,6 +38,8 @@ function abbreviations --on-event fish_prompt
     abbr --add --global ports "lsof -PiTCP -sTCP:LISTEN"
     abbr --add --global review "git reset (git merge-base head staging)"
     abbr --add --global beblg "git lg --grep='^v[0-9]\+\.[0-9]\+\.[0-9]\+' --grep='Merge pull request .\+beb-'"
+    abbr --add --global !! "gh copilot suggest"
+
 
     # delete itself so it is only executed once per session
     functions --erase abbreviations
