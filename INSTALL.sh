@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Author: @aristidesfl
+# Author: @franciscolourenco
 
 echo
 
