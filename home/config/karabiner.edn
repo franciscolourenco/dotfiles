@@ -1,95 +1,158 @@
 ;; edn spec https://github.com/edn-format/edn
-{
- :applications {:vscode ["^com\\.microsoft\\.VSCode$"]}
+{:profiles {:Default {:default true
 
+                      ; simultaneous_threshold_milliseconds (def: 50)
+                      ; different from simlayers, this is for cases like [:a :b]
+                      :sim     50
 
+                      ; to_delayed_action_delay_milliseconds
+                      ; NOTE: this should be equal to :held for mod-tap layers
+                      :delay   110
 
- ;;;; helper function to generate things little bit quicker
+                      ; to_if_held_down_threshold_milliseconds (def: 500)
+                      ; NOTE: this should be equal to :delay for mod-tap layers
+                      :held    110
+
+                      ; to_if_alone_timeout_milliseconds (def: 1000)
+                      ; NOTE: (i think) this must be just less than the delay / held value to avoid bug where mod-tap layer stays 1
+                      :alone   109
+
+                      ;you can set these delays individually in mod-tap layer definitions if you want separate default values here
+                      }}
+   ;; you can find bundle_identifiers using command line:
+     ;; osascript -e 'id of app "Google Chrome"'
+ :applications {:vscode ["^com\\.microsoft\\.VSCode$" "^com\\.todesktop\\.230313mzl4w4u92$"]
+                :notion ["^notion\\.id$"]
+                :linear   ["^com\\.linear$"]
+                :arc   ["^company\\.thebrowser\\.Browser$"]}
+
+ :templates {:notify "osascript -e 'display notification \"%s\"'"}
+
+;;;; helper function to generate things little bit quicker
  ;; quick define "layers" or "state" feature(use set_variable)
  ;; can use as conditions in rule list
  ;; {:<layer name> {:from <froms>}}
  ; :simlayers {:homerow {:key :spacebar}}
- ; :simlayer-threshold 250
-
+;; :simlayer-threshold 250
+;;  :layers {:homerow {:key :spacebar}
+;;           :tabmode {:key :tab}
+;;           :windowmode {:key :non_us_backslash}}
+;; ppkpdkppplpdlpdlplpdlpdlpdlpdlpdlpdlpdlpplplpppppppppppppppppppppp
  ;; main list
- :main [
+ :main [;NOTE: When adding a new layer, if you want it to be able to cross with an old one, you must add the name negated (:!new_name) to all other mod-tap layer conditions
+;;         {:des "francisco layers"
+;;          :rules [;; homerow-mode
+;;                  [:spacebar ["homerow-mode" 1] []
+;;                   {;; :alone {:key :spacebar :halt true}
+;;                   ;;  :delayed {:canceled [:notify "Delayed canceled"] :invoked [:notify "Delayed invoked"]}
+;;                    :held {:set ["homerow-mode" 1] :repeat false}
+;;                    :afterup [{:key :spacebar} {:set ["homerow-mode" 0]}]}]
+;; ;; {
+        ;;   :des "mod-tap layers"
+        ;;  :rules [;; homerow-mode
+        ;;          [:spacebar nil [:!tab-mode]
+        ;;           {:alone {:key :spacebar :halt true}
+        ;;            :delayed {:canceled {:key :spacebar}}
+        ;;            :held {:set ["homerow-mode" 1] :repeat false}
+        ;;            :afterup {:set ["homerow-mode" 0]}}]
 
- {:des "Homerow Mode" :rules [
-  [:spacebar ["homerow" 1] nil {:afterup ["homerow" 0] :alone :spacebar}]
+;; tab-mode
+                ;;  [:tab nil [:!homerow-mode]
+                ;;   {:alone {:key :tab :halt true} :delayed {:canceled {:key :tab}} :held {:set ["tab-mode" 1] :repeat false} :afterup {:set ["tab-mode" 0]}}]
 
-  ; modifiers + cut/copy/past
-  [:##f :left_command ["homerow" 1] {:alone :!Cv}]
-  [:##d :left_option ["homerow" 1] {:alone :!Cc}]
-  [:##s :left_control ["homerow" 1] {:alone :!Cx}]
-  [:##a :left_shift ["homerow" 1]{:alone :!Ts}]
-  [:##g [:left_shift :left_control :left_option :left_command] ["homerow" 1]{:alone :!TSd}]
+;; window-mode
+                ;;  [:spacebar nil [:!t-mode :!o-mode :!d-mode :!m-mode]
+                ;;   {:alone {:key :spacebar :halt true} :delayed {:canceled {:key :spacebar}} :held {:set ["homerow-mode" 1] :repeat false} :afterup {:set ["homerow-mode" 0]}
+                ;;    ;if want to define ms delays here
+                ;;    ;:params {:alone 199 :held 200 :delay 200}
+                ;;    }]
+                ;;  ]}
+  ;;       {:des "Homerow Mode" :rules [;; [:spacebar :homerow-mode nil {:afterup ["homerow-mode" 0] :alone :spacebar}]
 
-  ; directional
-  [:##i :up_arrow ["homerow" 1]]
-  [:##k :down_arrow ["homerow" 1]]
-  [:##j :left_arrow ["homerow" 1]]
-  [:##l :right_arrow ["homerow" 1]]
+  ;; ; modifiers + cut/copy/past
+  ;;                                    [:##f :left_command :homerow-mode {:alone :!Cv}]
+  ;;                                    [:##d :left_option :homerow-mode {:alone :!Cc}]
+  ;;                                    [:##s :left_control :homerow-mode {:alone :!Cx}]
+  ;;                                    [:##a :left_shift :homerow-mode {:alone :!Ts}]
+  ;;                                    [:##g [:left_shift :left_control :left_option :left_command] :homerow-mode {:alone :!TSd}]
 
-  ; edititing
-  [:##u :delete_or_backspace ["homerow" 1]]
-  [:##o :spacebar ["homerow" 1]]
-  [:##p :delete_forward ["homerow" 1]]
+  ;; ; directional
+  ;;                                    [:##i :up_arrow :homerow-mode]
+  ;;                                    [:##k :down_arrow :homerow-mode]
+  ;;                                    [:##j :left_arrow :homerow-mode]
+  ;;                                    [:##l :right_arrow :homerow-mode]
 
-   ; return / escape
-  [:##semicolon :return_or_enter ["homerow" 1]]
-  [:##quote :escape ["homerow" 1]]
+  ;; ; edititing
+  ;;                                    [:##u :delete_or_backspace :homerow-mode]
+  ;;                                    [:##o :spacebar :homerow-mode]
+  ;;                                    [:##p :delete_forward :homerow-mode]
 
-  ; undo / redo
-  [:##h :!Cz ["homerow" 1]]
-  [:##n :!CSz ["homerow" 1]]
+  ;;  ; return / escape
+  ;;                                    [:##semicolon :return_or_enter :homerow-mode]
+  ;;                                    [:##quote :escape :homerow-mode]
 
-  ; other commands
-  [:##slash :!Cslash ["homerow" 1]] ;; code comments
-  [:##backslash :!Cbackslash ["homerow" 1]] ;; lauchbar clipboard
-  [:##t :!Ct ["homerow" 1]] ;; new tab
-  [:##e :!Cf ["homerow" 1]] ;; find
-  [:##w :!Cw ["homerow" 1]] ;; close window/tab
- ]}
+  ;; ; undo / redo
+  ;;                                    [:##h :!Cz :homerow-mode]
+  ;;                                    [:##n :!CSz :homerow-mode]
 
- {:des "Tab Mode" :rules [
-  [:tab ["tabmode" 1] nil {:afterup ["tabmode" 0] :alone :tab}]
+  ;; ; other commands
+  ;;                                    [:##slash :!Cslash :homerow-mode] ;; code comments
+  ;;                                    [:##backslash :!Cbackslash :homerow-mode] ;; lauchbar clipboard
+  ;;                                    [:##t :!Ct :homerow-mode] ;; new tab
+  ;;                                    [:##e :!Cf :homerow-mode] ;; find
+  ;;                                    [:##w :!Cw :homerow-mode] ;; close window/tab
+  ;;                                    ]}
 
-  ; chage apps
-  [:l :!Ctab ["tabmode" 1]]
-  [:j :!CStab ["tabmode" 1]]
-  [:quote :!Cq ["tabmode" 1]]
+  ;;       {:des "Tab Mode" :rules [;; [:##tab ["tab-mode" 1] nil {:afterup ["tab-mode" 0], :alone :tab, :held :left_command}]
+  ;;   ;; [:tab :left_command nil {:alone :tab}]
+  ;; ;; [:tab []:left_command] nil {:alone :tab}]
 
-  ; change windows
-  [:i :!Cgrave_accent_and_tilde ["tabmode" 1]]
-  [:k :!CSgrave_accent_and_tilde ["tabmode" 1]]
+  ;; ; change app
+  ;;                                [:l :!Ctab :tab-mode]
+  ;;                                [:j :!CStab :tab-mode]
+  ;;                                [:quote :!Cq :tab-mode]
 
-  ; change tabs
-  [:u :!COleft_arrow ["tabmode" 1]]
-  [:o :!COright_arrow ["tabmode" 1]]
-  [:semicolon :!Ct ["tabmode" 1]]
-  [:y :!Cw ["tabmode" 1]]
-  [:h :!CSt ["tabmode" 1]]
+  ;; ; change windows
+  ;;                                [:i :!Cgrave_accent_and_tilde :tab-mode]
+  ;;                                [:k :!CSgrave_accent_and_tilde :tab-mode]
 
- ]}
+  ;; ; change tabs
+  ;;                                [:u :!COleft_arrow :tab-mode]
+  ;;                                [:o :!COright_arrow :tab-mode]
+  ;;                                [:semicolon :slash [:tab-mode :linear]]
+  ;;                                [:semicolon :!Cp [:tab-mode :notion]]
+  ;;                                [:semicolon :!Ct :tab-mode]
+  ;;                                [:y :!Cw :tab-mode]
+  ;;                                [:w :!Cw :tab-mode]
+  ;;                                [:h :!CSt :tab-mode]]}
 
- {:des "Caps Lock to Launchbar" :rules [
-  [:caps_lock :!COl]
-  [:!Rcaps_lock :!CORl :!vscode]
- ]}
+;;  {:des "Window Management Mode" :rules [
+;;   ; chage apps
+;;   [:l :!TOright_arrow :windowmode]
+;;   [:j :!TOleft_arrow :windowmode]
+;;   [:i :!TOup_arrow :windowmode]
+;;   [:k :!TOdown_arrow :windowmode]
+;;   [:semicolon :!TOreturn_or_enter :windowmode]
 
- {:des "Thumbsense" :rules [
-  [:##f :button1 ["multitouch_extension_finger_count_total" 1]]
-  [:##d :button2 ["multitouch_extension_finger_count_total" 1]]
-  [:g :!Cbutton1 ["multitouch_extension_finger_count_total" 1]]
-  [:w :!Cw ["multitouch_extension_finger_count_total" 1]]
- ]}
+;;  ]}
 
+        {:des "cmd+t to cmd+p in Notion" :rules [[:!Ct :!Cp :notion]]}
 
+        {:des "Caps Lock to Launchbar" :rules [[:caps_lock :!COl]
+                                               [:!Rcaps_lock :!Ck :linear]
+                                               [:!Rcaps_lock :!Cl :arc]
+                                               [:!Rcaps_lock :!CORl :!vscode]
+                                               [:!Rcaps_lock :!CRp :vscode]]}
 
+        {:des "Thumbsense" :rules [[:##f :button1 ["multitouch_extension_finger_count_total" 1]]
+                                   [:##d :button2 ["multitouch_extension_finger_count_total" 1]]
+                                   [:g :!Cbutton1 ["multitouch_extension_finger_count_total" 1]]
+                                   [:w :!Cw ["multitouch_extension_finger_count_total" 1]]
+                                   [:v :!Cv ["multitouch_extension_finger_count_total" 1]]
+                                   [:c :!Cc ["multitouch_extension_finger_count_total" 1]]
+                                   [:x :!Cx ["multitouch_extension_finger_count_total" 1]]]}]
 
-  ]
-
- ;; code won't read cheatsheet section
+;; code won't read cheatsheet section
  ;; ! stand for mandatory
  ;; # stand for optional
  ;; C T O S for left command control optional shift
@@ -104,5 +167,4 @@
               :!Cspacebar "command space"
               :!Fa "fn a"
               :##a "keycode a optional any"
-              :!!a "mandatory hyper(control command option shift) a "}
-}
+              :!!a "mandatory hyper(control command option shift) a "}}
