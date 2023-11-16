@@ -1,25 +1,21 @@
-if status --is-login
+if status is-login
 
     # add current folder to path
-    set -x PATH $PATH .
+    fish_add_path -g .
 
     # add homebrew to path
     fish_add_path -g /opt/homebrew/bin/
 
-    # add personal binaries to path
-    if test -d "$HOME/Dropbox/bin"
-        fish_add_path -g "$HOME/Dropbox/bin"
-    end
+    # add user binaries to path
+    fish_add_path -g "$HOME/.local/bin"
+
 
     # add postgres.app to path if installed
-    if test -d '/Applications/Postgres.app/Contents/Versions/latest/bin'
-        fish_add_path -g "/Applications/Postgres.app/Contents/Versions/latest/bin"
-    end
+    fish_add_path -g "/Applications/Postgres.app/Contents/Versions/latest/bin"
 
     # add coreutils gnubin if installed
-    if test -d /usr/local/opt/coreutils/libexec/gnubin
-        fish_add_path -g /usr/local/opt/coreutils/libexec/gnubin
-    end
+    fish_add_path -g /usr/local/opt/coreutils/libexec/gnubin
+
 
     # set e to sublime if available, otherwise use rmate, nano
     if test -f '/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl'
@@ -45,47 +41,58 @@ if status --is-login
         rbenv init - | source -
     end
 
+
     # use new key bindings of fzf
-    set -U FZF_LEGACY_KEYBINDINGS 0
-
-end
-
-if status --is-interactive
+    set -x FZF_LEGACY_KEYBINDINGS 0
 
     # set launchbar alias if launchbar is installed
     if test -e '/Applications/Launchbar.app'
         alias launchbar "open -a launchbar"
     end
 
-    # ----- other aliases -----
-    if type -q hub
-        alias git hub
-    end
-
-
-    alias e $EDITOR
-    alias hamachi "sudo '/Library/Application Support/LogMeIn Hamachi/bin/hamachid'"
-    alias spaces2tabs "find . -type f -not -path \"./.git/*\" -not -path 'node_modules/*' -exec grep -Iq '' {} \; -and -exec bash -c 'unexpand -t 2 \"$0\" > /tmp/e && mv /tmp/e \"$0\"' {} \;"
-    alias npm-exec "env PATH=(npm bin):(string join ':' -- $PATH)"
     # set tab width to 3 spaces instead of 8
     tabs -3
 
+    # pnpm
+    set -x PNPM_HOME /Users/user/Library/pnpm
+    fish_add_path -g "$PNPM_HOME"
+
+    # configure pipenv to create virtualenvs in the project folder
+    set -x PIPENV_VENV_IN_PROJECT 1
+
+    # disable virtualenv's default prompt
+    set -x VIRTUAL_ENV_DISABLE_PROMPT 1
+
+
+
+end
+
+if status is-interactive
+    # function and aliases need to be set in every shell, because they cannot be exported at login
+
+    alias e $EDITOR
+
+    #pyenv
+    if type -q pyenv
+        set -x PYENV_ROOT $HOME/.pyenv
+        fish_add_path -g $PYENV_ROOT/bin
+        pyenv init - | source
+    end
+
     # python virtualenv auto load when changing directory.
-    # to create a new virtualenv inside the project directory use: virtualenv .virtualenv
+    # note: this assumes a virtualenv was created and stored in the project directory with: `virtualenv .venv`
     function auto_virtualenv --on-variable PWD
-        if test -d ".virtualenv"
+        if test -d ".venv"
             if not set -q VIRTUAL_ENV
                 set --export --global venv_root $PWD
-                set --export --global VIRTUAL_ENV "$PWD/.virtualenv"
-
-                # env venv_root="$PWD" vex --path .virtualenv; and prevd
+                source .venv/bin/activate.fish
             end
         else
             if set -q VIRTUAL_ENV
                 if set -q venv_root
                     if not string match --entire --quiet $venv_root $PWD
                         set --erase venv_root
-                        set --erase VIRTUAL_ENV
+                        deactivate
                     end
                 end
             end
@@ -94,8 +101,4 @@ if status --is-interactive
 
     # in case the shell is started in a directory which contains a virtualenv
     auto_virtualenv
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/user/Downloads/google-cloud-sdk/path.fish.inc' ]
-    . '/Users/user/Downloads/google-cloud-sdk/path.fish.inc'
 end
