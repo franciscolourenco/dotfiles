@@ -11,51 +11,51 @@ set -g __fish_git_prompt_color_upstream green
 set -g __fish_git_prompt_color_dirtystate green
 set -g __fish_git_prompt_color_stagedstate yellow
 set -g __fish_git_prompt_color_untrackedfiles cyan
-set -g __fish_git_prompt_char_untrackedfiles '-'
+set -g __fish_git_prompt_char_untrackedfiles -
 set -g __fish_git_prompt_char_cleanstate ''
 set -g __fish_git_prompt_char_stateseparator ' '
 
 
 function home_pwd --description 'Print the current working directory, abbreviated with ~ when possible'
-  echo $PWD | sed -e "s|^$HOME|~|"
+    echo $PWD | sed -e "s|^$HOME|~|"
 end
 
 function fish_prompt --description 'Write out the prompt'
-	set -l last_status $status
+    set -l last_status $status
 
-  echo ''
+    echo ''
 
-  # User
-  set_color $fish_color_user
-  echo -n (whoami)
-  set_color normal
+    # User
+    set_color $fish_color_user
+    echo -n (whoami)
+    set_color normal
 
-  echo -n ' at '
+    echo -n ' at '
 
-  # Host
-  set_color $fish_color_host
-  echo -n (hostname -s)
-  set_color normal
+    # Host
+    set_color $fish_color_host
+    echo -n (hostname -s)
+    set_color normal
 
-  echo -n ' in '
+    echo -n ' in '
 
-  # PWD
-  set_color $fish_color_cwd
-  echo -n (home_pwd)
-  set_color normal
+    # PWD
+    set_color $fish_color_cwd
+    echo -n (home_pwd)
+    set_color normal
 
-  __fish_git_prompt ' on %s'
+    __fish_git_prompt ' on %s'
 
-  if set -q VIRTUAL_ENV
-      echo -n -s ' with ' (set_color -b normal blue) (basename "$VIRTUAL_ENV") (set_color normal)
-  end
+    if set -q VIRTUAL_ENV
+        echo -n -s ' with ' (set_color -b normal blue) (basename "$VIRTUAL_ENV") (set_color normal)
+    end
 
-  echo
+    echo
 
-  if not test $last_status -eq 0
-    set_color $fish_color_error
-  end
+    if not test $last_status -eq 0
+        set_color $fish_color_error
+    end
 
-  echo -n '$ '
-  set_color normal
+    echo -n '$ '
+    set_color normal
 end
