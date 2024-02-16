@@ -5,7 +5,7 @@ function abbreviations --on-event fish_prompt
     abbr --add --global c "git commit"
     abbr --add --global commit "git commit"
     abbr --add --global changes "git diff"
-    abbr --add --global branch "git branch --sort=committerdate"
+    abbr --add --global branch "git branch"
     abbr --add --global add "git add"
     abbr --add --global checkout "git checkout"
     abbr --add --global log "git log"
