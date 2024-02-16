@@ -70,6 +70,7 @@
 	stripLeadingSymbols = false
 [branch]
 	autosetuprebase = always
+	sort = committerdate
 [pull]
 	rebase = true
 [status]
