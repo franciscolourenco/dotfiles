@@ -5,13 +5,13 @@ set -g fish_color_cwd blue
 
 # git prompt colors and format
 set -g __fish_git_prompt_show_informative_status 1
+set -g __fish_git_prompt_showuntrackedfiles 1
 set -g __fish_git_prompt_showcolorhints 1
 set -g __fish_git_prompt_color_branch green
 set -g __fish_git_prompt_color_upstream green
 set -g __fish_git_prompt_color_dirtystate green
 set -g __fish_git_prompt_color_stagedstate yellow
 set -g __fish_git_prompt_color_untrackedfiles cyan
-set -g __fish_git_prompt_char_untrackedfiles -
 set -g __fish_git_prompt_char_cleanstate ''
 set -g __fish_git_prompt_char_stateseparator ' '
 
