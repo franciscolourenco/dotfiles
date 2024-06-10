@@ -46,6 +46,7 @@
 	report = !git log --author=\"`git config user.name`\" --format='%Cgreen%ci%Creset %s%Creset' --no-merges --reverse
 	prune = fetch --prune
 	stash-all = stash save --include-untracked
+	cleanb = !git branch --merged | grep -v '\\*\\|master\\|main' | xargs -n 1 git branch -d
 [include]
 	path = ~/.gitlocal
 [push]
