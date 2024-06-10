@@ -41,6 +41,7 @@
 [alias]
   aliases = !git config --get-regexp 'alias.*' | colrm 1 6 | sed 's/[ ]/ = /' | sort
 	lg = log --reverse --pretty=format:'%Cgreen%cd %Cred%h%Creset%C(yellow)%d%Creset %s %C(bold blue)<%an>%Creset' --abbrev-commit --max-count=200 --date=format:'%a, %d %b %H:%M'
+	lgmine = log --reverse --pretty=format:'%Cgreen%cd %Cred%h%Creset%C(yellow)%d%Creset %s %C(bold blue)<%an>%Creset' --abbrev-commit --date=format:'%Y %b %d %H:%M' --author="Francisco"
 	graph = log --color --graph --pretty=format:'%Cgreen%cd %Cred%h%Creset%C(yellow)%d%Creset %s %C(bold blue)<%an>%Creset' --abbrev-commit
 	find = log --diff-filter=A
 	report = !git log --author=\"`git config user.name`\" --format='%Cgreen%ci%Creset %s%Creset' --no-merges --reverse
