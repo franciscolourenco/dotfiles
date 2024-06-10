@@ -1,21 +1,11 @@
 if status is-login
 
-    # add current folder to path
-    fish_add_path -g .
-
-    # add homebrew to path
-    fish_add_path -g /opt/homebrew/bin/
-
-    # add user binaries to path
-    fish_add_path -g "$HOME/.local/bin"
-
-
-    # add postgres.app to path if installed
-    fish_add_path -g "/Applications/Postgres.app/Contents/Versions/latest/bin"
-
-    # add coreutils gnubin if installed
-    fish_add_path -g /usr/local/opt/coreutils/libexec/gnubin
-
+    fish_add_path -g . # current folder
+    fish_add_path -g /opt/homebrew/bin/ # homebrew
+    fish_add_path -g "$HOME/.local/bin" # user binaries
+    fish_add_path -g "$HOME/.cargo/bin" # cargo binaries
+    fish_add_path -g "/Applications/Postgres.app/Contents/Versions/latest/bin" # postgres.app if installed
+    fish_add_path -g /usr/local/opt/coreutils/libexec/gnubin # coreutils gnubin
 
     # set e to sublime if available, otherwise use rmate, nano
     if test -f '/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl'
