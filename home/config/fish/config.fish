@@ -6,6 +6,7 @@ if status is-login
     fish_add_path -g "$HOME/.cargo/bin" # cargo binaries
     fish_add_path -g "/Applications/Postgres.app/Contents/Versions/latest/bin" # postgres.app if installed
     fish_add_path -g /usr/local/opt/coreutils/libexec/gnubin # coreutils gnubin
+    source ~/.orbstack/shell/init2.fish 2>/dev/null || : # orbstack
 
     # set e to sublime if available, otherwise use rmate, nano
     if test -f '/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl'
@@ -52,9 +53,6 @@ if status is-login
 
     # disable virtualenv's default prompt
     set -x VIRTUAL_ENV_DISABLE_PROMPT 1
-
-
-
 end
 
 if status is-interactive
@@ -91,4 +89,5 @@ if status is-interactive
 
     # in case the shell is started in a directory which contains a virtualenv
     auto_virtualenv
+
 end
