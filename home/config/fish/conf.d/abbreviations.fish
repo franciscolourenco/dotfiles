@@ -30,6 +30,7 @@ function abbreviations --on-event fish_prompt
     abbr --add --global amend "git commit --amend"
     abbr --add --global pick "git cherry-pick"
     abbr --add --global cherry "git cherry-pick"
+    abbr --add --global check git "checkout (git reflog | egrep -io \"moving from ([^[:space:]]+)\" | awk '{ print \$3 }' | awk ' !x[\$0]++' | egrep -v '^[a-f0-9]{40}\$' | fzf | xargs)"
 
     abbr --add --global ll "ls -Alrth"
     abbr --add --global mkdirs "mkdir -p" # make intermediary directories
