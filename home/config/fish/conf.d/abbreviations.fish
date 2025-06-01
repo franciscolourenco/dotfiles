@@ -13,7 +13,7 @@ function abbreviations --on-event fish_prompt
     abbr --add --global merge "git merge"
     abbr --add --global pull "git pull"
     abbr --add --global push "git push -u"
-    abbr --add --global force "git push -u --force"
+    abbr --add --global force "git push -u --force-with-lease"
     abbr --add --global rebase "git rebase --ignore-date"
     abbr --add --global reset "git reset"
     abbr --add --global hard "git reset --hard"
