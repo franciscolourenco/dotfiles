@@ -96,6 +96,16 @@ if [[ `uname` == "Darwin" ]]; then
         /opt/homebrew/bin/brew install fish
     fi
 
+    # Install packages from Brewfile
+    if [ -f "Brewfile" ]; then
+        echo ""
+        read -p "Would you like to install packages and apps from Brewfile? (y/n) " REPLY
+        if [ "$REPLY" == "y" ]; then
+            echo "Installing packages from Brewfile..."
+            /opt/homebrew/bin/brew bundle
+        fi
+    fi
+
     # Add fish to shells
     if ! grep -q "/opt/homebrew/bin/fish" /etc/shells; then
             echo ""
