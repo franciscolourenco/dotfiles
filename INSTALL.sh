@@ -50,33 +50,33 @@ echo -e "$linkResults" | sed s:"$HOME":"~":g | column -t && echo
 }
 
 # ------------------------------- Git -------------------------------------
-# hash git 2>/dev/null && {
-#     read -p "Do you wish to configure git?(y/n) "
-#     [ "$REPLY" == "y" ] && {
-#         gitlocal="$HOME/.gitlocal"
+hash git 2>/dev/null && {
+    read -p "Do you wish to configure git?(y/n) "
+    [ "$REPLY" == "y" ] && {
+        gitlocal="$HOME/.gitlocal"
 
-#         # name
-#         read -p "Name: "
-#         [ "$REPLY" ] && git config -f "$gitlocal" user.name "$REPLY"
-#         # email
-#         read -p "Email: "
-#         [ "$REPLY" ] && git config -f "$gitlocal" user.email "$REPLY"
+        # name
+        read -p "Name: "
+        [ "$REPLY" ] && git config -f "$gitlocal" user.name "$REPLY"
+        # email
+        read -p "Email: "
+        [ "$REPLY" ] && git config -f "$gitlocal" user.email "$REPLY"
 
-#         if hash rmate 2>/dev/null; then
-#             git config -f "$gitlocal" core.editor "rmate -w"
-#         else
-#             # make git wait for sublime text otherwise commit doesn't work
-#             read -p "Do you want to edit commit messages using Sublime Text?(y/n)"
-#             [ "$REPLY" == "y" ] && git config -f "$gitlocal" core.editor "subl -w -n --command toggle_side_bar"
-#         fi
-#         # use keychain to retrieve passwords on repositories cloned via https
-#         [ "`uname`" == "Darwin" ] && git config -f "$gitlocal" credential.helper "osxkeychain"
-#         echo
-#         echo "Your preferences were saved in $gitlocal"
-#         echo "This file may be used for configurations specific to this machine."
-#         echo
-#     }
-# }
+        if hash rmate 2>/dev/null; then
+            git config -f "$gitlocal" core.editor "rmate -w"
+        else
+            # make git wait for sublime text otherwise commit doesn't work
+            read -p "Do you want to edit commit messages using Sublime Text?(y/n)"
+            [ "$REPLY" == "y" ] && git config -f "$gitlocal" core.editor "subl -w -n --command toggle_side_bar"
+        fi
+        # use keychain to retrieve passwords on repositories cloned via https
+        [ "`uname`" == "Darwin" ] && git config -f "$gitlocal" credential.helper "osxkeychain"
+        echo
+        echo "Your preferences were saved in $gitlocal"
+        echo "This file may be used for configurations specific to this machine."
+        echo
+    }
+}
 
 
 # ------------------------------- install/activate homebrew/fishfish ------------------------------------------
