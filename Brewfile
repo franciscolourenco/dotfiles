@@ -8,6 +8,7 @@ brew "exiftool"
 brew "bat" # better cat
 brew "fd" # better find
 brew "ripgrep" # better grep
+brew "fzf" # fuzzy finder
 
 cask "iterm2"
 cask "arc"
