@@ -1,3 +1,4 @@
+# Command Line Tools
 brew "fish" # fish shell
 brew "jq" # JSON processor
 brew "terminal-notifier" # notifications
@@ -9,7 +10,9 @@ brew "bat" # better cat
 brew "fd" # better find
 brew "ripgrep" # better grep
 brew "fzf" # fuzzy finder
+brew "mas" # Mac App Store CLI
 
+# Applications
 cask "iterm2"
 cask "arc"
 cask "visual-studio-code"
@@ -21,6 +24,7 @@ cask "imageoptim"
 cask "the-unarchiver"
 cask "appcleaner"
 cask "firefox"
+cask "google-chrome"
 cask "cloudflare-warp"
 cask "swish"
 cask "betterdisplay"
@@ -31,3 +35,9 @@ cask "keycastr"
 cask "orbstack"
 cask "pika"
 cask "shottr"
+cask "rustdesk"
+cask "whatsapp"
+cask "ghostty"
+
+# App Store
+mas "Gifox", id: 1461845568 # license bought from app store
