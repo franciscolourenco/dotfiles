@@ -18,10 +18,8 @@ cask "arc"
 cask "visual-studio-code"
 cask "cursor"
 cask "1password"
-cask "slack"
 cask "spotify"
 cask "imageoptim"
-cask "the-unarchiver"
 cask "appcleaner"
 cask "firefox"
 cask "google-chrome"
@@ -36,8 +34,12 @@ cask "orbstack"
 cask "pika"
 cask "shottr"
 cask "rustdesk"
-cask "whatsapp"
+cask "signal"
 cask "ghostty"
 
 # App Store
 mas "Gifox", id: 1461845568 # license bought from app store
+mas "Telegram", id: 747648890
+mas "WhatsApp Messenger", id: 310633997
+mas "Slack for Desktop", id: 803453959
+mas "The Unarchiver", id: 425424353
