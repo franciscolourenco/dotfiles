@@ -36,10 +36,10 @@ cask "shottr"
 cask "rustdesk"
 cask "signal"
 cask "ghostty"
+cask "slack" # supports gestures while the mas version does not
 
 # App Store
 mas "Gifox", id: 1461845568 # license bought from app store
 mas "Telegram", id: 747648890
 mas "WhatsApp Messenger", id: 310633997
-mas "Slack for Desktop", id: 803453959
 mas "The Unarchiver", id: 425424353
