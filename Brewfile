@@ -36,6 +36,7 @@ cask "shottr"
 cask "rustdesk"
 cask "signal"
 cask "ghostty"
+cask "gitify"
 cask "slack" # supports gestures while the mas version does not
 
 # App Store
