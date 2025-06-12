@@ -53,6 +53,7 @@
 [push]
 	default = current
 	followTags = true
+	autoSetupRemote = true
 [filter "lfs"]
 	required = true
 	clean = git-lfs clean -- %f
