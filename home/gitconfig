@@ -52,8 +52,8 @@
 	path = ~/.gitlocal
 [push]
 	default = current
-	followTags = true
 	autoSetupRemote = true
+	# followTags = true
 [filter "lfs"]
 	required = true
 	clean = git-lfs clean -- %f
