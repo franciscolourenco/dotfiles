@@ -112,10 +112,14 @@ format = '[[ $symbol $branch ](fg:crust bg:peach)]($style)'
 [git_status]
 style = "bg:peach"
 format = '[[($all_status$ahead_behind )](fg:crust bg:peach)]($style)'
-staged = '[[++\($count\)](fg:crust bg:peach)]($style)'
 ahead = '⇡${count}'
 diverged = '⇕⇡${ahead_count}⇣${behind_count}'
-behind = '⇣${count}'
+behind = '⇣${count} '
+staged = '✓${count} '
+renamed = '»${count} '
+untracked = '+${count} '
+deleted = '✘${count} '
+modified = '~${count} '
 
 
 [nodejs]
