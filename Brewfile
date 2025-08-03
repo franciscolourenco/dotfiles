@@ -1,3 +1,6 @@
+tap "buo/cask-upgrade" # for brew cu (cask upgrade)
+tap "tinted-theming/tinted" # for tinted (theme manager)
+
 # Command Line Tools
 brew "fish" # fish shell
 brew "jq" # JSON processor
@@ -6,11 +9,17 @@ brew "git"
 brew "gh" # GitHub CLI
 brew "tree"
 brew "exiftool"
-brew "bat" # better cat
+brew "bat" # better cat /w syntax highlighting
 brew "fd" # better find
+brew "less" # better pager
 brew "ripgrep" # better grep
 brew "fzf" # fuzzy finder
 brew "mas" # Mac App Store CLI
+brew "tldr" # simpler man pages
+brew "difftastic" # semantic diff (only )
+brew "delta" # better diff
+brew "tinty" # theme manager
+brew "starship" # prompt
 
 # Applications
 cask "iterm2"
@@ -31,13 +40,13 @@ cask "handbrake"
 cask "iina"
 cask "keycastr"
 cask "orbstack"
-cask "pika"
 cask "shottr"
 cask "rustdesk"
 cask "signal"
 cask "ghostty"
 cask "gitify"
 cask "slack" # supports gestures while the mas version does not
+cask "NetNewsWire"
 
 # App Store
 mas "Gifox", id: 1461845568 # license bought from app store
