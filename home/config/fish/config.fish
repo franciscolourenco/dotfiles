@@ -91,3 +91,6 @@ if status is-interactive
     auto_virtualenv
 
 end
+
+# starship prompt
+starship init fish | source
