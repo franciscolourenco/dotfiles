@@ -118,8 +118,9 @@ behind = '⇣${count} '
 staged = '✓${count} '
 renamed = '»${count} '
 untracked = '+${count} '
-deleted = '✘${count} '
+deleted = '-${count} '
 modified = '~${count} '
+stashed = ''
 
 
 [nodejs]
@@ -196,7 +197,7 @@ style = "bg:lavender"
 format = '[[  $time ](fg:crust bg:lavender)]($style)'
 
 [line_break]
-disabled = true
+disabled = false
 
 [character]
 disabled = false
