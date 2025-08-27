@@ -32,7 +32,6 @@ if status is-login
         rbenv init - | source -
     end
 
-
     # use new key bindings of fzf
     set -x FZF_LEGACY_KEYBINDINGS 0
 
@@ -53,6 +52,9 @@ if status is-login
 
     # disable virtualenv's default prompt
     set -x VIRTUAL_ENV_DISABLE_PROMPT 1
+
+    # configure less to use 4 spaces for tabs
+    set -x LESS "-RF --tabs=4 --quit-if-one-screen --mouse"
 end
 
 if status is-interactive
