@@ -10,6 +10,7 @@ function abbreviations --on-event fish_prompt
     abbr --add --global checkout "git checkout"
     abbr --add --global log "git log"
     abbr --add --global lg "git lg"
+    abbr --add --global lgm "git lgmerge"
     abbr --add --global lgmerge "git lgmerge"
     abbr --add --global lgmine "git lgmine"
     abbr --add --global merge "git merge"
