@@ -33,7 +33,8 @@ function abbreviations --on-event fish_prompt
     abbr --add --global amend "git commit --amend"
     abbr --add --global pick "git cherry-pick"
     abbr --add --global cherry "git cherry-pick"
-    abbr --add --global check git "checkout (git reflog | egrep -io \"moving from ([^[:space:]]+)\" | awk '{ print \$3 }' | awk ' !x[\$0]++' | egrep -v '^[a-f0-9]{40}\$' | fzf | xargs)"
+    abbr --add --global ci "git ci"
+    abbr --add --global di "git di"
 
     abbr --add --global ll "ls -Alrth"
     abbr --add --global mkdirs "mkdir -p" # make intermediary directories
@@ -43,7 +44,6 @@ function abbreviations --on-event fish_prompt
     abbr --add --global review "git reset (git merge-base head staging)"
     abbr --add --global beblg "git lg --grep='^v[0-9]\+\.[0-9]\+\.[0-9]\+' --grep='Merge pull request .\+beb-'"
     abbr --add --global !! "gh copilot suggest"
-
 
     # delete itself so it is only executed once per session
     functions --erase abbreviations
