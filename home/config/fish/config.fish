@@ -6,6 +6,11 @@ if status is-login
     fish_add_path -g "$HOME/.cargo/bin" # cargo binaries
     fish_add_path -g "/Applications/Postgres.app/Contents/Versions/latest/bin" # postgres.app if installed
     fish_add_path -g /usr/local/opt/coreutils/libexec/gnubin # coreutils gnubin
+
+    # go user path
+    set -Ux fish_user_paths /Users/user/go/bin $fish_user_paths
+
+    # orbstack
     source ~/.orbstack/shell/init2.fish 2>/dev/null || : # orbstack
 
     # set e to sublime if available, otherwise use rmate, nano
