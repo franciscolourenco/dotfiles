@@ -11,6 +11,22 @@
                 },
                 "rules": [
                     {
+                        "description": "Toggle Spotify play/pause",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "f8"
+                                },
+                                "to": [
+                                    {
+                                        "shell_command": "osascript -e 'tell application \"Spotify\" to playpause'"
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "cmd+t to cmd+p in Notion",
                         "manipulators": [
                             {
