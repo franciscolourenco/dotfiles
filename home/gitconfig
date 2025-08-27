@@ -40,10 +40,10 @@
 	tool = Kaleidoscope
 [alias]
   aliases = !git config --get-regexp 'alias.*' | colrm 1 6 | sed 's/[ ]/ = /' | sort
-	lg = "!git --no-pager log --reverse --color=always --pretty=format:'%Cgreen%cd %Cred%h%Creset %C(yellow)%d%Creset %s by %C(magenta)%an%Creset' --abbrev-commit --max-count=200 --date=format-local:'%a, %d %b %H:%M' | sed -E 's/pull request/PR/' | sed -E 's/Merge PR (#[0-9]+) from ([^[:space:]]+)/Merge PR \\x1b[1;34m\\1\\x1b[0m from \\x1b[1;34m\\2\\x1b[0m/'"
-	lgmerge = "!git --no-pager log --merges --reverse --color=always --pretty=format:'%Cgreen%cd %Cred%h%Creset%C(yellow)%d%Creset %s by %C(magenta)%an%Creset' --abbrev-commit --max-count=50 --date=format-local:'%a, %d %b %H:%M' | sed -E 's/pull request/PR/' | sed -E 's/Merge PR (#[0-9]+) from ([^[:space:]]+)/Merge PR \\x1b[1;34m\\1\\x1b[0m from \\x1b[1;34m\\2\\x1b[0m/'"
-	lgmine = "!git --no-pager log --reverse --color=always --pretty=format:'%Cgreen%cd %Cred%h%Creset%C(yellow)%d%Creset %s by %C(magenta)%an%Creset' --abbrev-commit --date=format-local:'%Y %b %d %H:%M' --author=\"Francisco\" | sed -E 's/pull request/PR/' | sed -E 's/Merge PR (#[0-9]+) from ([^[:space:]]+)/Merge PR \\x1b[1;34m\\1\\x1b[0m from \\x1b[1;34m\\2\\x1b[0m/'"
-	graph = log --color --graph --pretty=format:'%Cgreen%cd %Cred%h%Creset%C(yellow)%d%Creset %s %C(bold blue)<%an>%Creset' --abbrev-commit
+	lg = "!git --no-pager log --reverse --color=always --pretty=format:'%Cgreen%cd %Cred%h%Creset %s%C(yellow)%d%Creset by %C(magenta)%an%Creset' --abbrev-commit --max-count=200 --date=format-local:'%a, %d %b %H:%M' | sed -E 's/pull request/PR/' | sed -E 's/Merge PR (#[0-9]+) from ([^[:space:]]+)/Merge PR \\x1b[1;34m\\1\\x1b[0m from \\x1b[1;34m\\2\\x1b[0m/'"
+	lgmerge = "!git --no-pager log --merges --reverse --color=always --pretty=format:'%Cgreen%cd %Cred%h%Creset %s%C(yellow)%d%Creset by %C(magenta)%an%Creset' --abbrev-commit --max-count=50 --date=format-local:'%a, %d %b %H:%M' | sed -E 's/pull request/PR/' | sed -E 's/Merge PR (#[0-9]+) from ([^[:space:]]+)/Merge PR \\x1b[1;34m\\1\\x1b[0m from \\x1b[1;34m\\2\\x1b[0m/'"
+	lgmine = "!git --no-pager log --reverse --color=always --pretty=format:'%Cgreen%cd %Cred%h%Creset %s%C(yellow)%d%Creset by %C(magenta)%an%Creset' --abbrev-commit --date=format-local:'%Y %b %d %H:%M' --author=\"Francisco\" | sed -E 's/pull request/PR/' | sed -E 's/Merge PR (#[0-9]+) from ([^[:space:]]+)/Merge PR \\x1b[1;34m\\1\\x1b[0m from \\x1b[1;34m\\2\\x1b[0m/'"
+	graph = "!git log --color=always --graph --pretty=format:'%Cgreen%cd %Cred%h%Creset %s%C(yellow)%d%Creset by %C(magenta)%an%Creset' --abbrev-commit --date=format-local:'%a, %d %b %H:%M' | sed -E 's/pull request/PR/' | sed -E 's/Merge PR (#[0-9]+) from ([^[:space:]]+)/Merge PR \\x1b[1;34m\\1\\x1b[0m from \\x1b[1;34m\\2\\x1b[0m/' | ${PAGER:-less -R}"
 	find = log --diff-filter=A
 	report = !git log --author=\"`git config user.name`\" --format='%Cgreen%ci%Creset %s%Creset' --no-merges --reverse
 	prune = fetch --prune
