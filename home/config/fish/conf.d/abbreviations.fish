@@ -1,12 +1,13 @@
 function abbreviations --on-event fish_prompt
     # ----- git aliases -----
     abbr --add --global s "git status"
-    abbr --add --global b "git branch"
     abbr --add --global c "git commit"
     abbr --add --global commit "git commit"
     abbr --add --global changes "git diff"
+    abbr --add --global b "git branch"
     abbr --add --global branch "git branch"
     abbr --add --global add "git add"
+    abbr --add --global co "git checkout"
     abbr --add --global checkout "git checkout"
     abbr --add --global log "git log"
     abbr --add --global lg "git lg"
@@ -17,7 +18,7 @@ function abbreviations --on-event fish_prompt
     abbr --add --global pull "git pull"
     abbr --add --global push "git push"
     abbr --add --global force "git push --force-with-lease"
-    abbr --add --global rebase "git rebase --ignore-date"
+    abbr --add --global rebase "git rebase"
     abbr --add --global reset "git reset"
     abbr --add --global hard "git reset --hard"
     abbr --add --global clean "git clean -dff"
