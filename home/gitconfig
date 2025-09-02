@@ -49,6 +49,10 @@
 	prune = fetch --prune
 	stash-all = stash save --include-untracked
 	cleanb = !git branch --merged | grep -v '\\*\\|master\\|main' | xargs -n 1 git branch -d
+	unstage = reset HEAD --
+	uncommit = reset HEAD~1 --soft
+	di = !git branch --no-color --sort=-committerdate | fzf -m --header='Delete branches' | xargs -I {} git branch -D '{}'
+	ci = "!git checkout $(git branch --no-color --sort=-committerdate | fzf --header 'Checkout branch' | xargs)"
 [include]
 	path = ~/.gitlocal
 [push]
