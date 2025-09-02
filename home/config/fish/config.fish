@@ -8,6 +8,11 @@ fish_add_path -g /usr/local/opt/coreutils/libexec/gnubin # coreutils gnubin
 # go user path
 set -Ux fish_user_paths /Users/user/go/bin $fish_user_paths
 
+# local config
+if test -f ~/.config/fish/config-local.fish
+    source ~/.config/fish/config-local.fish
+end
+
 if status is-login
     # orbstack
     source ~/.orbstack/shell/init2.fish 2>/dev/null || : # orbstack
