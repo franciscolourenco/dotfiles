@@ -82,6 +82,10 @@
 [commit]
 	gpgsign = true
 	cleanup = strip
+[gpg]
+  format = ssh
+[gpg "ssh"]
+  program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
 [tag]
 	forceSignAnnotated = true
 [rerere]
