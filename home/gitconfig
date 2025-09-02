@@ -98,3 +98,5 @@
 	helper = osxkeychain
 [init]
 	defaultBranch = main
+[log]
+	date = local
