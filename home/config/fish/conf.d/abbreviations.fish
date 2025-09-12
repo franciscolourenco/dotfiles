@@ -21,6 +21,7 @@ function abbreviations --on-event fish_prompt
     abbr --add --global rebase "git rebase"
     abbr --add --global reset "git reset"
     abbr --add --global hard "git reset --hard"
+    abbr --add --global soft "git reset --soft"
     abbr --add --global clean "git clean -dff"
     abbr --add --global show "git show"
     abbr --add --global tag "git tag"
