@@ -3,10 +3,8 @@ fish_add_path -g /opt/homebrew/bin/ # homebrew
 fish_add_path -g "$HOME/.local/bin" # user binaries
 fish_add_path -g "$HOME/.cargo/bin" # cargo binaries
 fish_add_path -g "/Applications/Postgres.app/Contents/Versions/latest/bin" # postgres.app if installed
+fish_add_path -g /Users/user/go/bin # go user path
 fish_add_path -g /usr/local/opt/coreutils/libexec/gnubin # coreutils gnubin
-
-# go user path
-set -Ux fish_user_paths /Users/user/go/bin $fish_user_paths
 
 # local config
 if test -f ~/.config/fish/config-local.fish
