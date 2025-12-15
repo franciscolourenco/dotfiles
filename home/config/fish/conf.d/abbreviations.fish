@@ -28,6 +28,7 @@ function abbreviations --on-event fish_prompt
     abbr --add --global remove "git rm"
     abbr --add --global move "git mv"
     abbr --add --global stash "git stash"
+    abbr --add --global pop "git stash pop"
     abbr --add --global clone "git clone"
     abbr --add --global remote "git remote"
     abbr --add --global revert "git revert"
