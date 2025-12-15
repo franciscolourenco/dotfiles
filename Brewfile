@@ -20,6 +20,8 @@ brew "difftastic" # semantic diff (only )
 brew "delta" # better diff
 brew "tinty" # theme manager
 brew "starship" # prompt
+brew "btop" # better system monitor
+
 
 # Applications
 cask "iterm2"
