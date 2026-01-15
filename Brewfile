@@ -21,7 +21,7 @@ brew "delta" # better diff
 brew "tinty" # theme manager
 brew "starship" # prompt
 brew "btop" # better system monitor
-
+brew "mergiraf" # conflict resolution tool
 
 # Applications
 cask "iterm2"

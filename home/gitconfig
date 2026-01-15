@@ -1,6 +1,5 @@
 [core]
 	excludesfile = ~/.gitignore
-	pager = ""
 	ignorecase = false
 [color]
 	diff = auto
@@ -100,3 +99,6 @@
 	defaultBranch = main
 [log]
 	date = local
+[merge "mergiraf"]
+	name = mergiraf
+	driver = mergiraf merge --git %O %A %B -s %S -x %X -y %Y -p %P -l %L
