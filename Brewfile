@@ -49,6 +49,7 @@ cask "ghostty"
 cask "gitify"
 cask "slack" # supports gestures while the mas version does not
 cask "NetNewsWire"
+cask "Numi" # calculator
 
 # App Store
 mas "Gifox", id: 1461845568 # license bought from app store
