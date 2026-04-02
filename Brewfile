@@ -37,12 +37,14 @@ cask "google-chrome"
 cask "cloudflare-warp"
 cask "swish"
 cask "betterdisplay"
+cask "bettertouchtool"
 cask "deepl"
 cask "handbrake"
 cask "iina"
 cask "keycastr"
 cask "orbstack"
-cask "shottr"
+cask "shottr" # screenshot tool
+cask "cleanshot" # video recording
 cask "rustdesk"
 cask "signal"
 cask "ghostty"
@@ -56,3 +58,4 @@ mas "Gifox", id: 1461845568 # license bought from app store
 mas "Telegram", id: 747648890
 mas "WhatsApp Messenger", id: 310633997
 mas "The Unarchiver", id: 425424353
+mas "Clearly Markdown", id: Legend:
