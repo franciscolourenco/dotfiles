@@ -3,6 +3,7 @@
   "description": "karabiner config in karabiner.ts",
   "scripts": {
     "build": "tsx src/index.ts",
+    "dev": "tsx watch --clear-screen=false src/index.ts",
     "update": "npm update karabiner.ts"
   },
   "devDependencies": {

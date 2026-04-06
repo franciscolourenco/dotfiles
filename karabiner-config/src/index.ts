@@ -1,12 +1,14 @@
+import { execFileSync } from 'child_process'
 import {
   ifApp,
   ifVar,
   map,
   rule,
-  // toSetVar,
   writeToProfile,
 } from 'karabiner.ts'
 
+
+// Update karabiner.json
 writeToProfile('Default', [
   rule('Toggle Spotify play/pause').manipulators([
     map('f8').to$('osascript -e \'tell application "Spotify" to playpause\''),
@@ -18,9 +20,23 @@ writeToProfile('Default', [
       .condition(ifApp('^notion\\.id$')),
   ]),
 
-  rule('Caps Lock to Launchbar').manipulators([
+  rule('Caps Lock → Hyper / Launchbar').manipulators([
     map('caps_lock')
-      .to('l', ['left_command', 'left_option']),
+      .toHyper()
+      .toIfAlone('l', ['left_command', 'left_option']),
+
+    map('a', 'Hyper').toApp('Arc'),
+    map('c', 'Hyper').toApp('Cursor'),
+    map('d', 'Hyper').toApp('Dia'),
+    map('f', 'Hyper').toApp('Finder'),
+    map('g', 'Hyper').toApp('Google Chrome'),
+    map('l', 'Hyper').toApp('Slack'),
+    map('m', 'Hyper').toApp('Mail'),
+    map('n', 'Hyper').toApp('Notion'),
+    map('s', 'Hyper').toApp('Sublime Text'),
+    map('t', 'Hyper').toApp('iTerm'),
+    map('v', 'Hyper').toApp('Visual Studio Code'),
+    map('w', 'Hyper').toApp('WhatsApp'),
 
     map('caps_lock', 'right_shift')
       .to('k', 'left_command')
@@ -79,6 +95,16 @@ writeToProfile('Default', [
   'basic.to_if_alone_timeout_milliseconds': 109,
   'basic.to_if_held_down_threshold_milliseconds': 110,
 })
+
+
+
+// Automatically reload karabiner config after writing to the profile
+const cli =
+  '/Library/Application Support/org.pqrs/Karabiner-Elements/bin/karabiner_cli'
+const profile = execFileSync(cli, ['--show-current-profile-name'], {
+  encoding: 'utf-8',
+}).trim()
+execFileSync(cli, ['--select-profile', profile])
 
 // ============================================================
 // OLD / UNUSED CODE from karabiner.edn (kept for reference)

@@ -12,3 +12,12 @@ It optionally helps the user configure git in the system, and/or configure macOS
 brew.sh contains a list of useful cli utils and GUI apps.
 
 
+## Karabiner Elements
+
+karabiner.ts -> karabiner.json
+
+```
+cd karabiner-config
+npm install
+npm run dev
+```
