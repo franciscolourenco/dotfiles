@@ -37,6 +37,7 @@ writeToProfile('Default', [
     map('t', 'Hyper').toApp('iTerm'),
     map('v', 'Hyper').toApp('Visual Studio Code'),
     map('w', 'Hyper').toApp('WhatsApp'),
+    map('y', 'Hyper').toApp('YouTube Music'),
 
     map('caps_lock', 'right_shift')
       .to('k', 'left_command')

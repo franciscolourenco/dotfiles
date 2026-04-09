@@ -321,6 +321,25 @@
               {
                 "type": "basic",
                 "from": {
+                  "key_code": "y",
+                  "modifiers": {
+                    "mandatory": [
+                      "command",
+                      "option",
+                      "control",
+                      "shift"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "shell_command": "open -a \"YouTube Music\".app"
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
                   "key_code": "caps_lock",
                   "modifiers": {
                     "mandatory": [
