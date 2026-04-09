@@ -96,16 +96,6 @@ writeToProfile('Default', [
   'basic.to_if_held_down_threshold_milliseconds': 110,
 })
 
-
-
-// Automatically reload karabiner config after writing to the profile
-const cli =
-  '/Library/Application Support/org.pqrs/Karabiner-Elements/bin/karabiner_cli'
-const profile = execFileSync(cli, ['--show-current-profile-name'], {
-  encoding: 'utf-8',
-}).trim()
-execFileSync(cli, ['--select-profile', profile])
-
 // ============================================================
 // OLD / UNUSED CODE from karabiner.edn (kept for reference)
 // ============================================================

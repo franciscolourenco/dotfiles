@@ -25,7 +25,25 @@ linkSafely () {
 repoDir="$( cd -P "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 IFS=$'\n'
 toReplace="home/"
+
+# Directories to symlink as a whole rather than file-by-file
+folderLinks=("home/config/karabiner")
+
+for dir in "${folderLinks[@]}" ; do
+    destination="${dir/$toReplace/$HOME/.}"
+    parentDir=$(dirname "$destination")
+    [ -d "$parentDir" ] || mkdir -p "$parentDir"
+    linkSafely "$repoDir/$dir" "$destination"
+done
+
 for file in $(cd $repoDir && find home -type f \( ! -iname ".*" \)) ; do
+    # Skip files inside directories that are linked as a whole
+    skip=false
+    for dir in "${folderLinks[@]}" ; do
+        [[ "$file" == "$dir/"* ]] && skip=true && break
+    done
+    $skip && continue
+
     destination="${file/$toReplace/$HOME/.}"
     dirname=$(dirname $destination)
     basename=$(basename $destination)
