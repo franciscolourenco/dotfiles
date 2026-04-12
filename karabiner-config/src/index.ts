@@ -10,9 +10,9 @@ import {
 
 // Update karabiner.json
 writeToProfile('Default', [
-  rule('Toggle Spotify play/pause').manipulators([
-    map('f8').to$('osascript -e \'tell application "Spotify" to playpause\''),
-  ]),
+  // rule('Toggle Spotify play/pause').manipulators([
+  //   map('f8').to$('osascript -e \'tell application "Spotify" to playpause\''),
+  // ]),
 
   rule('cmd+t to cmd+p in Notion').manipulators([
     map('t', 'left_command')
