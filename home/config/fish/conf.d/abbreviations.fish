@@ -39,12 +39,13 @@ function abbreviations --on-event fish_prompt
     abbr --add ci "git ci"
     abbr --add di "git di"
 
+    abbr --add e "$EDITOR"
+    abbr --add launchbar "open -a launchbar"
     abbr --add ll "ls -Alrth"
     abbr --add mkdirs "mkdir -p" # make intermediary directories
     abbr --add k kubectl
     abbr --add pubkey "cat ~/.ssh/id_rsa.pub | pbcopy"
     abbr --add ports "lsof -PiTCP -sTCP:LISTEN"
-    abbr --add !! "gh copilot suggest"
 
     # delete itself so it is only executed once per session
     functions --erase abbreviations
