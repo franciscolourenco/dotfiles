@@ -1,19 +1,24 @@
-fish_add_path -g . # current folder
-fish_add_path -g /opt/homebrew/bin/ # homebrew
+# homebrew
+if test -x /opt/homebrew/bin/brew
+    eval (/opt/homebrew/bin/brew shellenv)
+    fish_add_path -g "$HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin" # coreutils gnubin
+end
+
 fish_add_path -g "$HOME/.local/bin" # user binaries
 fish_add_path -g "$HOME/.cargo/bin" # cargo binaries
+fish_add_path -g "$HOME/go/bin" # go user path
 fish_add_path -g "/Applications/Postgres.app/Contents/Versions/latest/bin" # postgres.app if installed
-fish_add_path -g /Users/user/go/bin # go user path
-fish_add_path -g /usr/local/opt/coreutils/libexec/gnubin # coreutils gnubin
 
 # local config
 if test -f ~/.config/fish/config-local.fish
     source ~/.config/fish/config-local.fish
 end
 
-if status is-login
+if status --is-login
     # orbstack
-    source ~/.orbstack/shell/init2.fish 2>/dev/null || : # orbstack
+    if test -f ~/.orbstack/shell/init2.fish
+        source ~/.orbstack/shell/init2.fish
+    end
 
     # set e to sublime if available, otherwise use rmate, nano
     if test -f '/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl'
@@ -64,7 +69,7 @@ if status is-login
     set -x LESS "-RF --tabs=4 --quit-if-one-screen --mouse"
 end
 
-if status is-interactive
+if status --is-interactive
     # function and aliases need to be set in every shell, because they cannot be exported at login
 
     alias e $EDITOR
@@ -98,8 +103,9 @@ if status is-interactive
 
     # in case the shell is started in a directory which contains a virtualenv
     auto_virtualenv
-
 end
 
 # starship prompt
-starship init fish | source
+if type -q starship
+    starship init fish | source
+end
