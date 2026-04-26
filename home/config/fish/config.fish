@@ -35,9 +35,6 @@ if status --is-interactive
     # set tab width to 4 spaces instead of 8
     tabs -4
 
-    # use new key bindings of fzf
-    set -x FZF_LEGACY_KEYBINDINGS 0
-
     # configure less to use 4 spaces for tabs
     set -x LESS "-RF --tabs=4 --quit-if-one-screen --mouse"
 
