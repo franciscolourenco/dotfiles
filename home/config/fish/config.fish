@@ -38,6 +38,9 @@ if status --is-interactive
     # configure less to use 4 spaces for tabs
     set -x LESS "-RF --tabs=4 --quit-if-one-screen --mouse"
 
+    # make tab automatically enter search mode instead of having to use shift+tab
+    bind tab complete-and-search
+
     # rbenv
     if type -q rbenv
         rbenv init - | source -
