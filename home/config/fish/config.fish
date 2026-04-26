@@ -26,7 +26,7 @@ if test -f ~/.config/fish/config-local.fish
 end
 
 if status --is-interactive
-    # colors
+    # color commands params and strings
     set -g fish_color_command green
     set -g fish_color_param normal
     set -g fish_color_quote E6E364
