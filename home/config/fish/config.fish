@@ -4,14 +4,15 @@ if test -x /opt/homebrew/bin/brew
     fish_add_path -g "$HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin" # coreutils gnubin
 end
 
+# paths
 fish_add_path -g "$HOME/.local/bin" # user binaries and uv tools
 fish_add_path -g "$HOME/.cargo/bin" # cargo binaries
 fish_add_path -g "$HOME/go/bin" # go user path
 fish_add_path -g "/Applications/Postgres.app/Contents/Versions/latest/bin" # postgres.app if installed
+fish_add_path -g "/Applications/Sublime Text.app/Contents/SharedSupport/bin" # sublime text if installed
 
 # set editor to Sublime if available, otherwise use rmate, nano
-if test -f '/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl'
-    fish_add_path -g "/Applications/Sublime Text.app/Contents/SharedSupport/bin"
+if type -q subl
     set -x EDITOR "subl --new-window"
     set -x KUBE_EDITOR "subl --wait --new-window --command toggle_side_bar"
 else if type -q rmate
