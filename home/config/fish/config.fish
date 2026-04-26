@@ -44,9 +44,9 @@ if status --is-interactive
     if type -q rbenv
         rbenv init - | source -
     end
-end
 
-# starship prompt
-if type -q starship
-    starship init fish | source
+    # starship prompt
+    if type -q starship
+        starship init fish | source
+    end
 end

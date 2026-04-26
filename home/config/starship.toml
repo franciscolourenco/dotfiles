@@ -1,7 +1,6 @@
 [character]
-success_symbol = "[>](bold green)"
-error_symbol = "[x](bold red)"
-vimcmd_symbol = "[<](bold green)"
+success_symbol = '[\$](bold green)'
+error_symbol = '[\$](bold red)'
 
 [git_commit]
 tag_symbol = " tag "
@@ -244,9 +243,6 @@ symbol = "spack "
 
 [solidity]
 symbol = "solidity "
-
-[status]
-symbol = "[x](bold red) "
 
 [sudo]
 symbol = "sudo "
