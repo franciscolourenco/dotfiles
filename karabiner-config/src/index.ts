@@ -20,10 +20,9 @@ writeToProfile('Default', [
       .condition(ifApp('^notion\\.id$')),
   ]),
 
-  rule('Caps Lock → Hyper / Launchbar').manipulators([
-    map('caps_lock')
-      .toHyper()
-      .toIfAlone('l', ['left_command', 'left_option']),
+  rule('Caps Lock → LaunchBar, Right Command → Hyper').manipulators([
+    map('caps_lock').to('l', ['left_command', 'left_option']),
+    map('right_command').toHyper(),
 
     map('a', 'Hyper').toApp('Arc'),
     map('c', 'Hyper').toApp('Cursor'),
