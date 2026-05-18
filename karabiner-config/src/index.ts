@@ -3,10 +3,43 @@ import {
   ifApp,
   ifVar,
   map,
+  mapSimultaneous,
   rule,
+  toSetVar,
   writeToProfile,
 } from 'karabiner.ts'
+import type { BasicManipulatorBuilder, FromKeyParam } from 'karabiner.ts'
 
+const APP_SWITCHER_VAR = 'app-switcher'
+
+type AppLauncher = {
+  key: FromKeyParam
+  label: string
+} & ({ app: string } | { shell: string })
+
+const appLaunchers: AppLauncher[] = [
+  { key: 1, label: '1Password', app: '1Password' },
+  { key: 'a', label: 'Arc', app: 'Arc' },
+  { key: 'c', label: 'Cursor', app: 'Cursor' },
+  { key: 'd', label: 'Dia', app: 'Dia' },
+  { key: 'e', label: 'Emoji', shell: 'open "raycast://extensions/raycast/emoji-symbols/search-emoji-symbols"' },
+  { key: 'f', label: 'Finder', app: 'Finder' },
+  { key: 'g', label: 'Google Chrome', app: 'Google Chrome' },
+  { key: 'l', label: 'Slack', app: 'Slack' },
+  { key: 'm', label: 'Mail', app: 'Mail' },
+  { key: 'n', label: 'Notion', app: 'Notion' },
+  { key: 'p', label: 'Confetti', shell: 'open "raycast://extensions/raycast/raycast/confetti"' },
+  { key: 's', label: 'Sublime Text', app: 'Sublime Text' },
+  { key: 't', label: 'iTerm', app: 'iTerm' },
+  { key: 'v', label: 'Visual Studio Code', app: 'Visual Studio Code' },
+  { key: 'w', label: 'WhatsApp', app: 'WhatsApp' },
+  { key: 'y', label: 'YouTube Music', app: 'YouTube Music' },
+  { key: 'x', label: 'XCode', app: 'XCode' },
+]
+
+function toLauncherTarget(builder: BasicManipulatorBuilder, launcher: AppLauncher) {
+  return 'app' in launcher ? builder.toApp(launcher.app) : builder.to$(launcher.shell)
+}
 
 // Update karabiner.json
 writeToProfile('Default', [
@@ -20,23 +53,31 @@ writeToProfile('Default', [
       .condition(ifApp('^notion\\.id$')),
   ]),
 
-  rule('Caps Lock → LaunchBar, Right Command → Hyper').manipulators([
-    map('caps_lock').to('l', ['left_command', 'left_option']),
-    map('right_command').toHyper(),
+  rule('Caps Lock → LaunchBar, Right Command app leader').manipulators([
+    map('right_command')
+      .to('right_command')
+      .toIfAlone(toSetVar(APP_SWITCHER_VAR, 1)),
+    mapSimultaneous(['caps_lock', ';'], undefined, 250)
+      .toVar(APP_SWITCHER_VAR, 1),
 
-    map('a', 'Hyper').toApp('Arc'),
-    map('c', 'Hyper').toApp('Cursor'),
-    map('d', 'Hyper').toApp('Dia'),
-    map('f', 'Hyper').toApp('Finder'),
-    map('g', 'Hyper').toApp('Google Chrome'),
-    map('l', 'Hyper').toApp('Slack'),
-    map('m', 'Hyper').toApp('Mail'),
-    map('n', 'Hyper').toApp('Notion'),
-    map('s', 'Hyper').toApp('Sublime Text'),
-    map('t', 'Hyper').toApp('iTerm'),
-    map('v', 'Hyper').toApp('Visual Studio Code'),
-    map('w', 'Hyper').toApp('WhatsApp'),
-    map('y', 'Hyper').toApp('YouTube Music'),
+    map('caps_lock')
+      .to('l', ['left_command', 'left_option'])
+      .condition(ifVar(APP_SWITCHER_VAR, 1).unless()),
+
+    ...appLaunchers.map((launcher) =>
+      toLauncherTarget(
+        map(launcher.key).condition(ifVar(APP_SWITCHER_VAR, 1)),
+        launcher,
+      )
+        .toUnsetVar(APP_SWITCHER_VAR),
+    ),
+
+    map('escape')
+      .toUnsetVar(APP_SWITCHER_VAR)
+      .condition(ifVar(APP_SWITCHER_VAR, 1)),
+    map('caps_lock')
+      .toUnsetVar(APP_SWITCHER_VAR)
+      .condition(ifVar(APP_SWITCHER_VAR, 1)),
 
     map('caps_lock', 'right_shift')
       .to('k', 'left_command')
