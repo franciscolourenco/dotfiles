@@ -57,7 +57,7 @@ writeToProfile('Default', [
     map('right_command')
       .to('right_command')
       .toIfAlone(toSetVar(APP_SWITCHER_VAR, 1)),
-    mapSimultaneous(['caps_lock', ';'], undefined, 250)
+    mapSimultaneous(['caps_lock', ';'], { key_down_order: 'strict' }, 250)
       .toVar(APP_SWITCHER_VAR, 1),
 
     map('caps_lock')

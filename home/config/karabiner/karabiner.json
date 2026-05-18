@@ -78,7 +78,10 @@
                     {
                       "key_code": "semicolon"
                     }
-                  ]
+                  ],
+                  "simultaneous_options": {
+                    "key_down_order": "strict"
+                  }
                 },
                 "parameters": {
                   "basic.simultaneous_threshold_milliseconds": 250
