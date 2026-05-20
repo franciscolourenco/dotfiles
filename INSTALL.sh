@@ -27,7 +27,7 @@ IFS=$'\n'
 toReplace="home/"
 
 # Directories to symlink as a whole rather than file-by-file
-folderLinks=("home/config/karabiner")
+folderLinks=("home/config/karabiner" "home/config/finicky")
 
 for dir in "${folderLinks[@]}" ; do
     destination="${dir/$toReplace/$HOME/.}"
