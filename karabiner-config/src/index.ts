@@ -10,7 +10,7 @@ import {
 } from 'karabiner.ts'
 import type { BasicManipulatorBuilder, FromKeyParam } from 'karabiner.ts'
 
-const APP_SWITCHER_VAR = 'app-switcher'
+const RETURN_APP_SWITCHER_VAR = 'return-app-switcher'
 
 type AppLauncher = {
   key: FromKeyParam
@@ -53,31 +53,22 @@ writeToProfile('Default', [
       .condition(ifApp('^notion\\.id$')),
   ]),
 
-  rule('Caps Lock → LaunchBar, Right Command app leader').manipulators([
-    map('right_command')
-      .to('right_command')
-      .toIfAlone(toSetVar(APP_SWITCHER_VAR, 1)),
-    mapSimultaneous(['caps_lock', ';'], { key_down_order: 'strict' }, 250)
-      .toVar(APP_SWITCHER_VAR, 1),
-
+  rule('Caps Lock → LaunchBar, Return app leader').manipulators([
+    map('return_or_enter')
+      .toVar(RETURN_APP_SWITCHER_VAR, 1)
+      .toIfAlone('return_or_enter')
+      .toAfterKeyUp(toSetVar(RETURN_APP_SWITCHER_VAR, 0))
+      .parameters({
+        'basic.to_if_alone_timeout_milliseconds': 220,
+      }),
     map('caps_lock')
-      .to('l', ['left_command', 'left_option'])
-      .condition(ifVar(APP_SWITCHER_VAR, 1).unless()),
-
+      .to('l', ['left_command', 'left_option']),
     ...appLaunchers.map((launcher) =>
       toLauncherTarget(
-        map(launcher.key).condition(ifVar(APP_SWITCHER_VAR, 1)),
+        map(launcher.key).condition(ifVar(RETURN_APP_SWITCHER_VAR, 1)),
         launcher,
-      )
-        .toUnsetVar(APP_SWITCHER_VAR),
+      ),
     ),
-
-    map('escape')
-      .toUnsetVar(APP_SWITCHER_VAR)
-      .condition(ifVar(APP_SWITCHER_VAR, 1)),
-    map('caps_lock')
-      .toUnsetVar(APP_SWITCHER_VAR)
-      .condition(ifVar(APP_SWITCHER_VAR, 1)),
 
     map('caps_lock', 'right_shift')
       .to('k', 'left_command')

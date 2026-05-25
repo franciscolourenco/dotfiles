@@ -47,53 +47,37 @@
             ]
           },
           {
-            "description": "Caps Lock → LaunchBar, Right Command app leader",
+            "description": "Caps Lock → LaunchBar, Return app leader",
             "manipulators": [
               {
                 "type": "basic",
                 "from": {
-                  "key_code": "right_command"
+                  "key_code": "return_or_enter"
                 },
                 "to": [
                   {
-                    "key_code": "right_command"
+                    "set_variable": {
+                      "name": "return-app-switcher",
+                      "value": 1
+                    }
                   }
                 ],
                 "to_if_alone": [
                   {
-                    "set_variable": {
-                      "name": "app-switcher",
-                      "value": 1
-                    }
+                    "key_code": "return_or_enter"
                   }
-                ]
-              },
-              {
-                "type": "basic",
-                "from": {
-                  "simultaneous": [
-                    {
-                      "key_code": "caps_lock"
-                    },
-                    {
-                      "key_code": "semicolon"
-                    }
-                  ],
-                  "simultaneous_options": {
-                    "key_down_order": "strict"
-                  }
-                },
-                "parameters": {
-                  "basic.simultaneous_threshold_milliseconds": 250
-                },
-                "to": [
+                ],
+                "to_after_key_up": [
                   {
                     "set_variable": {
-                      "name": "app-switcher",
-                      "value": 1
+                      "name": "return-app-switcher",
+                      "value": 0
                     }
                   }
-                ]
+                ],
+                "parameters": {
+                  "basic.to_if_alone_timeout_milliseconds": 220
+                }
               },
               {
                 "type": "basic",
@@ -108,13 +92,6 @@
                       "left_option"
                     ]
                   }
-                ],
-                "conditions": [
-                  {
-                    "type": "variable_unless",
-                    "name": "app-switcher",
-                    "value": 1
-                  }
                 ]
               },
               {
@@ -125,19 +102,13 @@
                 "conditions": [
                   {
                     "type": "variable_if",
-                    "name": "app-switcher",
+                    "name": "return-app-switcher",
                     "value": 1
                   }
                 ],
                 "to": [
                   {
                     "shell_command": "open -a \"1Password\".app"
-                  },
-                  {
-                    "set_variable": {
-                      "name": "app-switcher",
-                      "type": "unset"
-                    }
                   }
                 ]
               },
@@ -149,19 +120,13 @@
                 "conditions": [
                   {
                     "type": "variable_if",
-                    "name": "app-switcher",
+                    "name": "return-app-switcher",
                     "value": 1
                   }
                 ],
                 "to": [
                   {
                     "shell_command": "open -a \"Arc\".app"
-                  },
-                  {
-                    "set_variable": {
-                      "name": "app-switcher",
-                      "type": "unset"
-                    }
                   }
                 ]
               },
@@ -173,19 +138,13 @@
                 "conditions": [
                   {
                     "type": "variable_if",
-                    "name": "app-switcher",
+                    "name": "return-app-switcher",
                     "value": 1
                   }
                 ],
                 "to": [
                   {
                     "shell_command": "open -a \"Cursor\".app"
-                  },
-                  {
-                    "set_variable": {
-                      "name": "app-switcher",
-                      "type": "unset"
-                    }
                   }
                 ]
               },
@@ -197,19 +156,13 @@
                 "conditions": [
                   {
                     "type": "variable_if",
-                    "name": "app-switcher",
+                    "name": "return-app-switcher",
                     "value": 1
                   }
                 ],
                 "to": [
                   {
                     "shell_command": "open -a \"Dia\".app"
-                  },
-                  {
-                    "set_variable": {
-                      "name": "app-switcher",
-                      "type": "unset"
-                    }
                   }
                 ]
               },
@@ -221,19 +174,13 @@
                 "conditions": [
                   {
                     "type": "variable_if",
-                    "name": "app-switcher",
+                    "name": "return-app-switcher",
                     "value": 1
                   }
                 ],
                 "to": [
                   {
                     "shell_command": "open \"raycast://extensions/raycast/emoji-symbols/search-emoji-symbols\""
-                  },
-                  {
-                    "set_variable": {
-                      "name": "app-switcher",
-                      "type": "unset"
-                    }
                   }
                 ]
               },
@@ -245,19 +192,13 @@
                 "conditions": [
                   {
                     "type": "variable_if",
-                    "name": "app-switcher",
+                    "name": "return-app-switcher",
                     "value": 1
                   }
                 ],
                 "to": [
                   {
                     "shell_command": "open -a \"Finder\".app"
-                  },
-                  {
-                    "set_variable": {
-                      "name": "app-switcher",
-                      "type": "unset"
-                    }
                   }
                 ]
               },
@@ -269,19 +210,13 @@
                 "conditions": [
                   {
                     "type": "variable_if",
-                    "name": "app-switcher",
+                    "name": "return-app-switcher",
                     "value": 1
                   }
                 ],
                 "to": [
                   {
                     "shell_command": "open -a \"Google Chrome\".app"
-                  },
-                  {
-                    "set_variable": {
-                      "name": "app-switcher",
-                      "type": "unset"
-                    }
                   }
                 ]
               },
@@ -293,19 +228,13 @@
                 "conditions": [
                   {
                     "type": "variable_if",
-                    "name": "app-switcher",
+                    "name": "return-app-switcher",
                     "value": 1
                   }
                 ],
                 "to": [
                   {
                     "shell_command": "open -a \"Slack\".app"
-                  },
-                  {
-                    "set_variable": {
-                      "name": "app-switcher",
-                      "type": "unset"
-                    }
                   }
                 ]
               },
@@ -317,19 +246,13 @@
                 "conditions": [
                   {
                     "type": "variable_if",
-                    "name": "app-switcher",
+                    "name": "return-app-switcher",
                     "value": 1
                   }
                 ],
                 "to": [
                   {
                     "shell_command": "open -a \"Mail\".app"
-                  },
-                  {
-                    "set_variable": {
-                      "name": "app-switcher",
-                      "type": "unset"
-                    }
                   }
                 ]
               },
@@ -341,19 +264,13 @@
                 "conditions": [
                   {
                     "type": "variable_if",
-                    "name": "app-switcher",
+                    "name": "return-app-switcher",
                     "value": 1
                   }
                 ],
                 "to": [
                   {
                     "shell_command": "open -a \"Notion\".app"
-                  },
-                  {
-                    "set_variable": {
-                      "name": "app-switcher",
-                      "type": "unset"
-                    }
                   }
                 ]
               },
@@ -365,19 +282,13 @@
                 "conditions": [
                   {
                     "type": "variable_if",
-                    "name": "app-switcher",
+                    "name": "return-app-switcher",
                     "value": 1
                   }
                 ],
                 "to": [
                   {
                     "shell_command": "open \"raycast://extensions/raycast/raycast/confetti\""
-                  },
-                  {
-                    "set_variable": {
-                      "name": "app-switcher",
-                      "type": "unset"
-                    }
                   }
                 ]
               },
@@ -389,19 +300,13 @@
                 "conditions": [
                   {
                     "type": "variable_if",
-                    "name": "app-switcher",
+                    "name": "return-app-switcher",
                     "value": 1
                   }
                 ],
                 "to": [
                   {
                     "shell_command": "open -a \"Sublime Text\".app"
-                  },
-                  {
-                    "set_variable": {
-                      "name": "app-switcher",
-                      "type": "unset"
-                    }
                   }
                 ]
               },
@@ -413,19 +318,13 @@
                 "conditions": [
                   {
                     "type": "variable_if",
-                    "name": "app-switcher",
+                    "name": "return-app-switcher",
                     "value": 1
                   }
                 ],
                 "to": [
                   {
                     "shell_command": "open -a \"iTerm\".app"
-                  },
-                  {
-                    "set_variable": {
-                      "name": "app-switcher",
-                      "type": "unset"
-                    }
                   }
                 ]
               },
@@ -437,19 +336,13 @@
                 "conditions": [
                   {
                     "type": "variable_if",
-                    "name": "app-switcher",
+                    "name": "return-app-switcher",
                     "value": 1
                   }
                 ],
                 "to": [
                   {
                     "shell_command": "open -a \"Visual Studio Code\".app"
-                  },
-                  {
-                    "set_variable": {
-                      "name": "app-switcher",
-                      "type": "unset"
-                    }
                   }
                 ]
               },
@@ -461,19 +354,13 @@
                 "conditions": [
                   {
                     "type": "variable_if",
-                    "name": "app-switcher",
+                    "name": "return-app-switcher",
                     "value": 1
                   }
                 ],
                 "to": [
                   {
                     "shell_command": "open -a \"WhatsApp\".app"
-                  },
-                  {
-                    "set_variable": {
-                      "name": "app-switcher",
-                      "type": "unset"
-                    }
                   }
                 ]
               },
@@ -485,19 +372,13 @@
                 "conditions": [
                   {
                     "type": "variable_if",
-                    "name": "app-switcher",
+                    "name": "return-app-switcher",
                     "value": 1
                   }
                 ],
                 "to": [
                   {
                     "shell_command": "open -a \"YouTube Music\".app"
-                  },
-                  {
-                    "set_variable": {
-                      "name": "app-switcher",
-                      "type": "unset"
-                    }
                   }
                 ]
               },
@@ -509,61 +390,13 @@
                 "conditions": [
                   {
                     "type": "variable_if",
-                    "name": "app-switcher",
+                    "name": "return-app-switcher",
                     "value": 1
                   }
                 ],
                 "to": [
                   {
                     "shell_command": "open -a \"XCode\".app"
-                  },
-                  {
-                    "set_variable": {
-                      "name": "app-switcher",
-                      "type": "unset"
-                    }
-                  }
-                ]
-              },
-              {
-                "type": "basic",
-                "from": {
-                  "key_code": "escape"
-                },
-                "to": [
-                  {
-                    "set_variable": {
-                      "name": "app-switcher",
-                      "type": "unset"
-                    }
-                  }
-                ],
-                "conditions": [
-                  {
-                    "type": "variable_if",
-                    "name": "app-switcher",
-                    "value": 1
-                  }
-                ]
-              },
-              {
-                "type": "basic",
-                "from": {
-                  "key_code": "caps_lock"
-                },
-                "to": [
-                  {
-                    "set_variable": {
-                      "name": "app-switcher",
-                      "type": "unset"
-                    }
-                  }
-                ],
-                "conditions": [
-                  {
-                    "type": "variable_if",
-                    "name": "app-switcher",
-                    "value": 1
                   }
                 ]
               },
