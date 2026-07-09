@@ -23,6 +23,7 @@ brew "tinty" # theme manager
 brew "starship" # prompt
 brew "btop" # better system monitor
 brew "mergiraf" # conflict resolution tool
+brew "direnv" # per-directory env vars
 
 # Applications
 cask "iterm2"
@@ -54,6 +55,7 @@ cask "slack" # supports gestures while the mas version does not
 cask "NetNewsWire"
 cask "Numi" # calculator
 cask "Finicky" # browser selector
+cask "cyberduck" # ftp
 
 # App Store
 mas "Gifox", id: 1461845568 # license bought from app store
