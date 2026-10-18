@@ -13,7 +13,6 @@ brew "less" # better pager
 brew "ripgrep" # better grep
 brew "fzf" # fuzzy finder
 brew "mas" # Mac App Store CLI
-brew "tldr" # simpler man pages
 brew "difftastic" # semantic diff (only )
 brew "delta" # better diff
 brew "starship" # prompt
