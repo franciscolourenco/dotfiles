@@ -1,6 +1,3 @@
-tap "buo/cask-upgrade" # for brew cu (cask upgrade)
-tap "tinted-theming/tinted" # for tinted (theme manager)
-
 # Command Line Tools
 brew "fish" # fish shell
 brew "uv" # python package and environment manager
@@ -19,7 +16,6 @@ brew "mas" # Mac App Store CLI
 brew "tldr" # simpler man pages
 brew "difftastic" # semantic diff (only )
 brew "delta" # better diff
-brew "tinty" # theme manager
 brew "starship" # prompt
 brew "btop" # better system monitor
 brew "mergiraf" # conflict resolution tool
