@@ -15,7 +15,7 @@ The script should do this: \(ai.prompt)</string>
 	<key>AdjustWindowForFontSizeChange</key>
 	<true/>
 	<key>AllowClipboardAccess</key>
-	<false/>
+	<true/>
 	<key>AlternateMouseScroll</key>
 	<true/>
 	<key>AnimateDimming</key>
@@ -5315,6 +5315,8 @@ The script should do this: \(ai.prompt)</string>
 	<false/>
 	<key>DoubleReportScrollWheel</key>
 	<false/>
+	<key>EnableAPIServer</key>
+	<false/>
 	<key>EnableRendezvous</key>
 	<false/>
 	<key>EnterCopyModeAutomatically</key>
@@ -6063,8 +6065,6 @@ The script should do this: \(ai.prompt)</string>
 			</dict>
 			<key>Background Image Is Tiled</key>
 			<false/>
-			<key>Background Image Location</key>
-			<string></string>
 			<key>Badge Color</key>
 			<dict>
 				<key>Alpha Component</key>
@@ -6778,9 +6778,9 @@ The script should do this: \(ai.prompt)</string>
 			<key>Semantic History</key>
 			<dict>
 				<key>action</key>
-				<string>best editor</string>
+				<string>editor</string>
 				<key>editor</key>
-				<string>com.microsoft.VSCode</string>
+				<string>com.todesktop.230313mzl4w4u92</string>
 				<key>text</key>
 				<string>open \1</string>
 			</dict>
@@ -7088,7 +7088,7 @@ The script should do this: \(ai.prompt)</string>
 			<key>Thin Strokes</key>
 			<integer>1</integer>
 			<key>Transparency</key>
-			<real>0.046714357659220697</real>
+			<real>0.02</real>
 			<key>Triggers</key>
 			<array/>
 			<key>Unlimited Scrollback</key>
