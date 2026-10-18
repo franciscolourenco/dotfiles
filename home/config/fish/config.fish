@@ -51,6 +51,10 @@ if status --is-interactive
     # make tab automatically enter search mode instead of having to use shift+tab
     bind tab complete-and-search
 
+    if type -q delta
+        set -g fzf_diff_highlighter delta --paging=never --width=20
+    end
+
     # rbenv
     if type -q rbenv
         rbenv init - | source -
