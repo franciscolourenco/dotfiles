@@ -60,9 +60,4 @@ if status --is-interactive
     if type -q starship
         starship init fish | source
     end
-
-    # per-directory env vars (.envrc files)
-    if type -q direnv
-        direnv hook fish | source
-    end
 end
