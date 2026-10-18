@@ -62,4 +62,4 @@ mas "Gifox", id: 1461845568 # license bought from app store
 mas "Telegram", id: 747648890
 mas "WhatsApp Messenger", id: 310633997
 mas "The Unarchiver", id: 425424353
-mas "Clearly Markdown", id: Legend:
+mas "Clearly Markdown", id: 6760669470
