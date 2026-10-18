@@ -3,6 +3,7 @@ import {
   ifApp,
   ifVar,
   map,
+  mapConsumerKey,
   mapSimultaneous,
   rule,
   toSetVar,
@@ -43,9 +44,10 @@ function toLauncherTarget(builder: BasicManipulatorBuilder, launcher: AppLaunche
 
 // Update karabiner.json
 writeToProfile('Default', [
-  // rule('Toggle Spotify play/pause').manipulators([
-  //   map('f8').to$('osascript -e \'tell application "Spotify" to playpause\''),
-  // ]),
+  rule('Toggle Spotify play/pause').manipulators([
+    map('f8').to$('/usr/bin/osascript -e \'tell application "Spotify" to playpause\''),
+    mapConsumerKey('play_or_pause').to$('/usr/bin/osascript -e \'tell application "Spotify" to playpause\''),
+  ]),
 
   rule('cmd+t to cmd+p in Notion').manipulators([
     map('t', 'left_command')
