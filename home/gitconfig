@@ -1,6 +1,8 @@
 [core]
 	excludesfile = ~/.gitignore
 	ignorecase = false
+	# Format interactive Git output; captured diffs retain Git's standard format.
+	pager = delta
 [color]
 	diff = auto
 	status = auto
@@ -8,6 +10,8 @@
 	interactive = auto
 	ui = true
 	pager = true
+[interactive]
+	diffFilter = delta --color-only
 [color "branch"]
 	current = yellow reverse
 	local = yellow
@@ -23,9 +27,6 @@
 	untracked = cyan
 [diff]
  	renames = copy # makes the diff much shorter when moving or copying files
-  tool = icdiff
-[difftool]
-	prompt = false
 [mergetool]
 	prompt = false
 [alias]
@@ -54,12 +55,6 @@
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
-[pager]
-	diff = diff-so-fancy
-	show = diff-so-fancy
-[diff-so-fancy]
-	markEmptyLines = false
-	stripLeadingSymbols = false
 [branch]
 	autosetuprebase = always
 	sort = committerdate
@@ -82,6 +77,23 @@
 	helper = osxkeychain
 [init]
 	defaultBranch = main
+[delta]
+	navigate = true  # use n and N to move between diff sections
+	line-numbers = true
+	true-color = always
+	features = decorations
+	side-by-side = false
+	theme = "base16"
+[difftool]
+	# Run the difftool immediately, don't ask 'are you sure' each time.
+	prompt = false
+[difftool "difftastic"]
+	# Opt in with: git difftool -t difftastic
+	# See `man git-difftool` for a description of MERGED, LOCAL and REMOTE.
+	cmd = difft "$MERGED" "$LOCAL" "abcdef1" "100644" "$REMOTE" "abcdef2" "100644"
+[pager]
+	# Difftastic renders its own output; do not pass it through Delta.
+	difftool = false
 [log]
 	date = local
 [merge "mergiraf"]
