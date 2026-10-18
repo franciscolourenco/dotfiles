@@ -104,3 +104,6 @@
 	driver = mergiraf merge --git %O %A %B -s %S -x %X -y %Y -p %P -l %L
 [rebase]
 	updateRefs = true
+[merge]
+	# Mergiraf needs diff3 to reconstruct all three versions; zdiff3 can break parsing.
+	conflictstyle = diff3
