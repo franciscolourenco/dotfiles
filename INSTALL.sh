@@ -115,12 +115,12 @@ if [[ `uname` == "Darwin" ]]; then
     fi
 
     # Install packages from Brewfile
-    if [ -f "Brewfile" ]; then
+    if [ -f "$repoDir/Brewfile" ]; then
         echo ""
         read -p "Would you like to install packages and apps from Brewfile? (y/n) " REPLY
         if [ "$REPLY" == "y" ]; then
             echo "Installing packages from Brewfile..."
-            /opt/homebrew/bin/brew bundle
+            /opt/homebrew/bin/brew bundle --file "$repoDir/Brewfile"
         fi
     fi
 
