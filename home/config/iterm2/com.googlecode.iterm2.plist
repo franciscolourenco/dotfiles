@@ -6372,7 +6372,7 @@ The script should do this: \(ai.prompt)</string>
 			</array>
 			<key>Keyboard Map</key>
 			<dict>
-				<key>0x19-0x1e0000-0x30</key>
+				<key>0x19-0x1e0000-0x30-0x1</key>
 				<dict>
 					<key>Action</key>
 					<integer>2</integer>
@@ -6424,7 +6424,7 @@ The script should do this: \(ai.prompt)</string>
 					<key>Version</key>
 					<integer>2</integer>
 				</dict>
-				<key>0x9-0x1c0000-0x30</key>
+				<key>0x9-0x1c0000-0x30-0x1</key>
 				<dict>
 					<key>Action</key>
 					<integer>0</integer>
@@ -6437,7 +6437,7 @@ The script should do this: \(ai.prompt)</string>
 					<key>Version</key>
 					<integer>2</integer>
 				</dict>
-				<key>0xf702-0x220000-0x7b</key>
+				<key>0xf702-0x220000-0x7b-0x1</key>
 				<dict>
 					<key>Action</key>
 					<integer>47</integer>
@@ -6463,7 +6463,7 @@ The script should do this: \(ai.prompt)</string>
 					<key>Version</key>
 					<integer>2</integer>
 				</dict>
-				<key>0xf702-0x2a0000-0x7b</key>
+				<key>0xf702-0x2a0000-0x7b-0x1</key>
 				<dict>
 					<key>Action</key>
 					<integer>47</integer>
@@ -6489,7 +6489,7 @@ The script should do this: \(ai.prompt)</string>
 					<key>Version</key>
 					<integer>2</integer>
 				</dict>
-				<key>0xf702-0x3e0000-0x7b</key>
+				<key>0xf702-0x3e0000-0x7b-0x1</key>
 				<dict>
 					<key>Action</key>
 					<integer>18</integer>
@@ -6502,7 +6502,7 @@ The script should do this: \(ai.prompt)</string>
 					<key>Version</key>
 					<integer>2</integer>
 				</dict>
-				<key>0xf703-0x220000-0x7c</key>
+				<key>0xf703-0x220000-0x7c-0x1</key>
 				<dict>
 					<key>Action</key>
 					<integer>46</integer>
@@ -6528,7 +6528,7 @@ The script should do this: \(ai.prompt)</string>
 					<key>Version</key>
 					<integer>2</integer>
 				</dict>
-				<key>0xf703-0x2a0000-0x7c</key>
+				<key>0xf703-0x2a0000-0x7c-0x1</key>
 				<dict>
 					<key>Action</key>
 					<integer>46</integer>
@@ -6554,7 +6554,7 @@ The script should do this: \(ai.prompt)</string>
 					<key>Version</key>
 					<integer>2</integer>
 				</dict>
-				<key>0xf703-0x3e0000-0x7c</key>
+				<key>0xf703-0x3e0000-0x7c-0x1</key>
 				<dict>
 					<key>Action</key>
 					<integer>19</integer>
@@ -6680,7 +6680,7 @@ The script should do this: \(ai.prompt)</string>
 			<key>Only The Default BG Color Uses Transparency</key>
 			<false/>
 			<key>Option Key Sends</key>
-			<integer>0</integer>
+			<integer>2</integer>
 			<key>Place Prompt at First Column</key>
 			<true/>
 			<key>Prompt Before Closing 2</key>
