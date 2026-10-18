@@ -124,6 +124,16 @@ if [[ `uname` == "Darwin" ]]; then
         fi
     fi
 
+    # Install mise using the recommended official installer
+    if ! command -v mise >/dev/null 2>&1 && [ ! -x "$HOME/.local/bin/mise" ]; then
+        echo ""
+        read -r -p "Would you like to install mise (runtime version manager)? (y/N) " REPLY
+        if [[ "$REPLY" == [yY] ]]; then
+            echo "Installing mise..."
+            curl -fsSL https://mise.run | sh
+        fi
+    fi
+
     # Add fish to shells
     if ! grep -q "/opt/homebrew/bin/fish" /etc/shells; then
             echo ""

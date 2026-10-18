@@ -11,9 +11,14 @@ fish_add_path -g "$HOME/go/bin" # go user path
 fish_add_path -g "/Applications/Postgres.app/Contents/Versions/latest/bin" # postgres.app if installed
 fish_add_path -g "/Applications/Sublime Text.app/Contents/SharedSupport/bin" # sublime text if installed
 
-# Automatically change to the correct node version on cd
-if type -q fnm
-    fnm env --use-on-cd --shell fish | source
+# OrbStack
+if test -f ~/.orbstack/shell/init2.fish
+    source ~/.orbstack/shell/init2.fish 2>/dev/null || :
+end
+
+# mise
+if test -x ~/.local/bin/mise
+    ~/.local/bin/mise activate fish | source
 end
 
 # set editor to Sublime if available, otherwise use rmate, nano
@@ -54,5 +59,10 @@ if status --is-interactive
     # starship prompt
     if type -q starship
         starship init fish | source
+    end
+
+    # per-directory env vars (.envrc files)
+    if type -q direnv
+        direnv hook fish | source
     end
 end
