@@ -72,6 +72,8 @@ symbol = "fossil "
 
 [gcloud]
 symbol = "gcp "
+# Show the account only when this shell explicitly selects a GCP context.
+detect_env_vars = ["CLOUDSDK_CONFIG", "CLOUDSDK_CORE_PROJECT", "GOOGLE_CLOUD_PROJECT", "GOOGLE_APPLICATION_CREDENTIALS"]
 
 [git_branch]
 symbol = " "
