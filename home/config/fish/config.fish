@@ -21,6 +21,12 @@ if test -x ~/.local/bin/mise
     ~/.local/bin/mise activate fish | source
 end
 
+# 1Password SSH agent, for tools that read SSH_AUTH_SOCK instead of ~/.ssh/config
+set -l op_ssh_sock "$HOME/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
+if test -S $op_ssh_sock
+    set -gx SSH_AUTH_SOCK $op_ssh_sock
+end
+
 # set editor to Sublime if available, otherwise use rmate, nano
 if type -q subl
     set -x EDITOR "subl --new-window"
