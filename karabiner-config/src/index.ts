@@ -42,11 +42,17 @@ function toLauncherTarget(builder: BasicManipulatorBuilder, launcher: AppLaunche
   return 'app' in launcher ? builder.toApp(launcher.app) : builder.to$(launcher.shell)
 }
 
+// After Spotify updates itself in place, the still-running process no longer matches its
+// on-disk signature and macOS rejects Apple Events to it (-1743) until Spotify is restarted.
+const SPOTIFY_PLAY_PAUSE =
+  '/usr/bin/osascript -e \'tell application "Spotify" to playpause\'' +
+  ' || /usr/bin/osascript -e \'display notification "Spotify probably updated in the background. Restart it." with title "Spotify play/pause failed"\''
+
 // Update karabiner.json
 writeToProfile('Default', [
   rule('Toggle Spotify play/pause').manipulators([
-    map('f8').to$('/usr/bin/osascript -e \'tell application "Spotify" to playpause\''),
-    mapConsumerKey('play_or_pause').to$('/usr/bin/osascript -e \'tell application "Spotify" to playpause\''),
+    map('f8').to$(SPOTIFY_PLAY_PAUSE),
+    mapConsumerKey('play_or_pause').to$(SPOTIFY_PLAY_PAUSE),
   ]),
 
   rule('cmd+t to cmd+p in Notion').manipulators([

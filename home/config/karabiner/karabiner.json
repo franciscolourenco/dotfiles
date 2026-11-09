@@ -24,7 +24,7 @@
                 },
                 "to": [
                   {
-                    "shell_command": "/usr/bin/osascript -e 'tell application \"Spotify\" to playpause'"
+                    "shell_command": "/usr/bin/osascript -e 'tell application \"Spotify\" to playpause' || /usr/bin/osascript -e 'display notification \"Spotify probably updated in the background. Restart it.\" with title \"Spotify play/pause failed\"'"
                   }
                 ]
               },
@@ -35,7 +35,7 @@
                 },
                 "to": [
                   {
-                    "shell_command": "/usr/bin/osascript -e 'tell application \"Spotify\" to playpause'"
+                    "shell_command": "/usr/bin/osascript -e 'tell application \"Spotify\" to playpause' || /usr/bin/osascript -e 'display notification \"Spotify probably updated in the background. Restart it.\" with title \"Spotify play/pause failed\"'"
                   }
                 ]
               }
